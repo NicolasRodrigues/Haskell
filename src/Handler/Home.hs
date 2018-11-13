@@ -15,5 +15,3 @@ getHomeR :: Handler Html
 getHomeR = do 
     defaultLayout $ do 
         $(whamletFile "templates/home.hamlet")
-        toWidgetHead $(juliusFile "templates/home.julius")
-        toWidget $(luciusFile "templates/home.lucius")

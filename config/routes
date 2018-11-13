@@ -5,7 +5,6 @@
 
 / HomeR GET
 
-
 /teste ListAlunoR GET
 /teste2 InsereAlunoR POST
 --/aluno/listagem    ListaAlunoR GET

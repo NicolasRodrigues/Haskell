@@ -3,11 +3,17 @@
 {-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE QuasiQuotes #-}
 module Handler.Home where
 
 import Import
-import Network.HTTP.Types.Status
-import Database.Persist.Postgresql
+import Text.Lucius
+import Text.Julius
+
 
 getHomeR :: Handler Html
-getHomeR = undefined
+getHomeR = do 
+    defaultLayout $ do 
+        $(whamletFile "templates/home.hamlet")
+        toWidgetHead $(juliusFile "templates/home.julius")
+        toWidget $(luciusFile "templates/home.lucius")

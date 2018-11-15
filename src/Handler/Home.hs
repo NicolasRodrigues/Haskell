@@ -12,6 +12,9 @@ import Text.Julius
 
 
 getHomeR :: Handler Html
-getHomeR = do 
+getHomeR = do  
     defaultLayout $ do 
-        $(whamletFile "templates/home.hamlet")
+         toWidgetHead $(juliusFile "templates/home.julius")
+         toWidget $(luciusFile "templates/home.lucius")
+         $(whamletFile "templates/home.hamlet")
+        

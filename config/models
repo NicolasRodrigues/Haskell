@@ -1,3 +1,9 @@
+Usuario
+    nome     Text
+    email    Text
+    senha    Text
+    deriving Show
+    
 Aluno json
     nome     Text
     idade    Int

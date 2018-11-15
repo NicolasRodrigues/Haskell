@@ -16,3 +16,10 @@ a:hover {
     background-color: #ddd;
     color: black;
 }
+
+.main{
+    margin: 0 auto;
+    width: 50%;
+    height: 100%;
+    box-shadow: 5px 4px 10px #888888;
+}

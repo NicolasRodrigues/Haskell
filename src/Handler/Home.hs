@@ -15,6 +15,8 @@ import Text.Julius
 widgetMenu :: Widget
 widgetMenu = $(whamletFile "templates/menu.hamlet")
 
+widgetFooter :: Widget
+widgetFooter = $(whamletFile "templates/footer.hamlet")
 
 getHomeR :: Handler Html
 getHomeR = do 
@@ -23,3 +25,4 @@ getHomeR = do
         toWidgetHead $(juliusFile "templates/home.julius")
         toWidget $(luciusFile "templates/home.lucius")
         toWidget $(luciusFile "templates/menu.lucius")
+        toWidget $(luciusFile "templates/footer.lucius")

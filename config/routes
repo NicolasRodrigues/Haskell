@@ -3,9 +3,12 @@
 /favicon.ico FaviconR GET
 /robots.txt RobotsR GET
 
-/     HomeR  GET
+/             HomeR         GET
 
-/teste ListAlunoR GET
-/teste2 InsereAlunoR POST
--- /aluno/listagem    ListaAlunoR GET
+/teste        ListAlunoR    GET
+/teste2       InsereAlunoR  POST
+
 /cadastro     CadastroR     GET
+/dicas        DicasR        GET
+/sobre        SobreR        GET
+-- /aluno/listagem    ListaAlunoR GET

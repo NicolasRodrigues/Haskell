@@ -4,7 +4,7 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE QuasiQuotes #-}
-module Handler.Home where
+module Handler.Sobre where
 
 import Import
 import Text.Lucius
@@ -16,10 +16,8 @@ widgetMenu :: Widget
 widgetMenu = $(whamletFile "templates/menu.hamlet")
 
 
-getHomeR :: Handler Html
-getHomeR = do 
+getSobreR :: Handler Html
+getSobreR = do 
     defaultLayout $ do
-        $(whamletFile "templates/home.hamlet")
-        toWidgetHead $(juliusFile "templates/home.julius")
-        toWidget $(luciusFile "templates/home.lucius")
+        $(whamletFile "templates/sobre.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")

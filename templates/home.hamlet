@@ -1,5 +1,1 @@
-<div class="topnav">
-  <a class="active" href=@{HomeR}>Início
-  <a class="active" href=@{CadastroR}>Cadastrar dicas
-  <a class="active" href="#">Ver nossas dicas
-  <a class="active" href="#">Sobre
+^{widgetMenu}

@@ -23,3 +23,4 @@ getCadastroR = do
         $(whamletFile "templates/cadastro.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")
         toWidget $(luciusFile "templates/footer.lucius")
+        toWidget $(luciusFile "templates/cadastro.lucius")

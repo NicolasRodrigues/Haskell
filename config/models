@@ -1,24 +1,46 @@
-Usuario
-    nome     Text
-    email    Text
-    senha    Text
-    deriving Show
-    
-Aluno json
-    nome     Text
-    idade    Int
-    ra       Text
-    UniqueRA ra
-    deriving Show
 
-Matricula json 
-    alunoid       AlunoId 
-    discid        DisciplinaId
-    matriculadoEm Day 
-    deriving Show
-    
-Disciplina json 
-    nome          Text 
-    codigo        Text 
-    cargaHoraria  Int
-    deriving Show
+Usuario json
+    nome            Text
+    email           Text
+    senha           Text
+    UniqueUsuario   email
+    deriving Show 
+
+Categoria json	
+	nome            Text
+	UniqueCategoria nome	
+    deriving Show 
+
+Artigo json
+    categoriaid     CategoriaId 	
+	nome            Text
+	dataInclusao    Day
+	qtVisualizacao  Int
+	qtCurtidas      Int
+	qtNaoCurtidas   Int
+	qtAcesso        Int
+	UniqueArtigo    nome	
+    deriving Show 
+
+Passos json
+    categoriaid     CategoriaId 	
+	artigoid        ArtigoId
+	titulo          Text
+	caminhoFoto     Text
+	desc            Text	
+    deriving Show 
+
+InfoAdicional json
+    categoriaid     CategoriaId 	
+	artigoid        ArtigoId
+	dicas           Text
+	aviso           Text
+	materiaisNec    Text	
+    deriving Show 
+
+Empresa json
+    comoSomos       Text 	
+    comoFunciona    Text 	
+    comoPossoAjudar Text 	
+    comoContribuir  Text 	
+    deriving Show 

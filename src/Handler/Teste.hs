@@ -15,11 +15,11 @@ import Database.Persist.Sql
 
 getListAlunoR :: Handler TypedContent
 getListAlunoR = do 
-    alunos <- runDB $ selectList [] [Asc AlunoNome]
-    sendStatusJSON ok200 (object ["resp" .= alunos])
+    usuarios <- runDB $ selectList [] [Asc UsuarioNome]
+    sendStatusJSON ok200 (object ["resp" .= usuarios])
 
 postInsereAlunoR :: Handler TypedContent
 postInsereAlunoR = do
-    aluno <- requireJsonBody :: Handler Aluno
-    alunoid <- runDB $ insert aluno
-    sendStatusJSON created201 (object ["resp" .= alunoid])
+    usuario <- requireJsonBody :: Handler Usuario
+    usuarioid <- runDB $ insert usuario
+    sendStatusJSON created201 (object ["resp" .= usuarioid])

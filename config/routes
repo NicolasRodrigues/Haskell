@@ -5,8 +5,10 @@
 
 /             HomeR         GET
 
-/teste        ListAlunoR    GET
-/teste2       InsereAlunoR  POST
+/teste        ListUsuarioR    GET
+/teste2       InsereUsuarioR  POST
+/teste4/#UsuarioId/apagar  ApagarR DELETE
+/teste5/#UsuarioId/alterar         AlterarR  PUT
 
 /cadastro     CadastroR     GET
 /dicas        DicasR        GET

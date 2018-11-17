@@ -5,10 +5,17 @@
 
 /             HomeR         GET
 
+-- testando usuario
 /teste        ListUsuarioR    GET
 /teste2       InsereUsuarioR  POST
 /teste4/#UsuarioId/apagar  ApagarR DELETE
 /teste5/#UsuarioId/alterar         AlterarR  PUT
+
+-- testando categoria
+/categoria/teste        ListCategoriaR    GET
+/categoria/teste2       InsereCategoriaR  POST
+/categoria/teste4/#CategoriaId/apagar  ApagarCategoriaR DELETE
+/categoria/teste5/#CategoriaId/alterar         AlterarCategoriaR  PUT
 
 /cadastro     CadastroR     GET
 /dicas        DicasR        GET

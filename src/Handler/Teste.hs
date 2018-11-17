@@ -13,6 +13,10 @@ import Text.Lucius
 import Text.Julius
 import Database.Persist.Sql
 
+
+--
+-- ============ USUARIO ============
+--
 --curl -v GET https://projhaskell-danfatec13.c9users.io/teste
 -- para trazer todos os usuarios.
 getListUsuarioR :: Handler TypedContent
@@ -46,4 +50,51 @@ putAlterarR usuarioid = do
     runDB $ replace usuarioid altUsuario 
     sendStatusJSON noContent204 (object [])
     
+
+
+--
+-- ============ CATEGORIA ============
+--
+-- insert Categoria
+-- curl -X POST https://projhaskell-danfatec13.c9users.io/categoria/teste2 -d '{"nome":"Programação"}'	
+-- delete
+-- curl -X DELETE https://projhaskell-danfatec13.c9users.io/categoria/teste4/1/apagar
+-- select
+-- curl -v GET https://projhaskell-danfatec13.c9users.io/categoria/teste
+-- update
+-- curl -X PUT https://projhaskell-danfatec13.c9users.io/categoria/teste5/1/alterar  -d '{"nome":"Haskell"}'	
+
+	
+-- para trazer todos as categorias .
+getListCategoriaR :: Handler TypedContent
+getListCategoriaR = do 
+    categorias <- runDB $ selectList [] [Asc CategoriaNome]
+    sendStatusJSON ok200 (object ["resp" .= categorias])
+    
+-- para inserir nova categoria.
+postInsereCategoriaR :: Handler TypedContent
+postInsereCategoriaR = do
+    categoria <- requireJsonBody :: Handler Categoria
+    categoriaid <- runDB $ insert categoria
+    sendStatusJSON created201 (object ["resp" .= categoriaid])
+    
+-- deletar a categoria de acordo com o categoriaId recebido
+deleteApagarCategoriaR :: CategoriaId -> Handler TypedContent
+deleteApagarCategoriaR categoriaid = do  
+    _ <- runDB $ get404 categoriaid
+    runDB $ delete categoriaid
+    sendStatusJSON noContent204 (object [])
+    
+
+-- update from categoria 
+-- set (todos os campos)
+-- where categoria.id = categoriaid
+putAlterarCategoriaR :: CategoriaId -> Handler TypedContent
+putAlterarCategoriaR categoriaid = do 
+    _ <- runDB $ get404 categoriaid
+    altCategoria <- requireJsonBody :: Handler Categoria
+    runDB $ replace categoriaid altCategoria 
+    sendStatusJSON noContent204 (object [])
+    
+
 

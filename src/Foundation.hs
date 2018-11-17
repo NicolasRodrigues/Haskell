@@ -35,3 +35,5 @@ instance RenderMessage App FormMessage where
 
 instance HasHttpManager App where
     getHttpManager = appHttpManager
+
+type Form a = Html -> MForm Handler (FormResult a, Widget)

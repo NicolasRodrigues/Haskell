@@ -1,6 +1,6 @@
 .cadastro{
     width: 50%;
-    height: 400px;
+    height: 800px;
     margin: 0 auto;
     background-color: white;
     margin-bottom: 0.2em;
@@ -12,4 +12,35 @@
 .form{
     margin: 0 auto;
     width: 30%;
+}
+
+label{
+    margin:-10px;
+    font-size: 18px;
+}
+
+input[type=text]{
+    width: 100%;
+    padding: 5px 5px;
+    margin: 5px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea{
+    width: 100%;
+    padding: 5px 5px;
+    margin: 5px 0;
+}
+
+input[type=submit]{
+    margin: 0 auto;
+    width: 100%;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: green;
 }

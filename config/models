@@ -24,25 +24,25 @@ Utilidades json
 	qtCurtidas      Int
 	qtNaoCurtidas   Int
 	qtAcesso        Int
-    deriving Show 
+	deriving Show 
 
 Passos json
 	artigoid        ArtigoId
 	titulo          Text
 	caminhoFoto     Text
 	desc            Text	
-    deriving Show 
+	deriving Show
 
 InfoAdicional json
 	artigoid        ArtigoId
 	dicas           Text
 	aviso           Text
 	materiaisNec    Text	
-    deriving Show 
+	deriving Show 
 
 Empresa json
-    comoSomos       Text 	
-    comoFunciona    Text 	
-    comoPossoAjudar Text 	
-    comoContribuir  Text 	
-    deriving Show 
+	comoSomos       Text 	
+	comoFunciona    Text 	
+	comoPossoAjudar Text 	
+	comoContribuir  Text 	
+	deriving Show 

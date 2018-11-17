@@ -17,7 +17,8 @@ Artigo json
 	dataInclusao    Day
 	UniqueArtigo    nome	
     deriving Show 
-Status json	
+    
+Utilidades json	
 	artigoid        ArtigoId
 	qtVisualizacao  Int
 	qtCurtidas      Int

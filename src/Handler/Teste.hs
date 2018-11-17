@@ -96,5 +96,7 @@ putAlterarCategoriaR categoriaid = do
     runDB $ replace categoriaid altCategoria 
     sendStatusJSON noContent204 (object [])
     
-
+-- obter a data do dia.
+diaHoje :: IO Day
+diaHoje = fmap utctDay getCurrentTime
 

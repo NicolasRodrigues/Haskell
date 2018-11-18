@@ -1,0 +1,20 @@
+^{widgetMenu}
+
+<h1> Logar no nosso sistema
+
+<div class="outside">
+
+    <form action="" method="">
+        <div class="form">
+            <label for="usuario">Usuario:
+            <br>
+            <input type="text" id="usuario" required>
+            <br>
+            <label for="senha">Senha:
+            <br>
+            <input type="password" id="senha" required>
+            <br>
+            <input type="submit" value="Log in">
+<div class="footer">
+    ^{widgetFooter}
+

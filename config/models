@@ -14,7 +14,7 @@ Categoria json
 Artigo json
     categoriaid     CategoriaId 	
 	nome            Text
-	dataInclusao    Day
+	dataArt         Day
 	UniqueArtigo    nome	
     deriving Show 
     

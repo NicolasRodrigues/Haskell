@@ -3,17 +3,55 @@
 {-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE TypeFamilies #-}
-{-# LANGUAGE DeriveGeneric #-}
-
+{-# LANGUAGE QuasiQuotes #-}
 module Handler.Teste where
 
-import Import
 import Import
 import Text.Lucius
 import Text.Julius
 import Database.Persist.Sql
+import Control.Monad.Zip
+import Yesod.Form
 
 
+formUsuario :: Form (Usuario, Text)
+formUsuario = renderBootstrap $  pure (,)
+    <*> (Usuario 
+        <$> areq textField "Nome: " Nothing
+        <*> areq emailField "E-mail: " Nothing 
+        <*> areq passwordField "Password: " Nothing
+    )
+    <*> areq passwordField "Password Confirmation: " Nothing
+                        
+
+postUsuarioR :: Handler Html
+postUsuarioR = do 
+    ((res,_),_) <- runFormPost formUsuario
+    case res of
+        FormSuccess (usr, passwordC) -> do 
+            if (usuarioSenha usr) == passwordC then do
+                runDB $ insert usr 
+                setMessage [shamlet|
+                    <h1>
+                        Usuario cadastrado!
+                |]
+                redirect HomeR
+            else do 
+                setMessage [shamlet|
+                    <h1>
+                        Senhas não conferem
+                |]
+                redirect UsuarioR
+
+getUsuarioR :: Handler Html
+getUsuarioR = do 
+    (widgetUsu, enctype) <- generateFormPost formUsuario
+    msg <- getMessage
+    defaultLayout $ do 
+        addStylesheet $ StaticR css_bootstrap_css
+        $(whamletFile "templates/usuario.hamlet")
+        
+        
 --
 -- ============ USUARIO ============
 --
@@ -96,7 +134,89 @@ putAlterarCategoriaR categoriaid = do
     runDB $ replace categoriaid altCategoria 
     sendStatusJSON noContent204 (object [])
     
--- obter a data do dia.
-diaHoje :: IO Day
-diaHoje = fmap utctDay getCurrentTime
 
+formCategoria :: Form Categoria
+formCategoria = renderBootstrap $   (Categoria 
+        <$> areq textField "Nome: " Nothing
+    )
+    
+
+postCategoriaR :: Handler Html
+postCategoriaR = do 
+    ((res,_),_) <- runFormPost formCategoria
+    case res of
+        FormSuccess (cat) -> do 
+                runDB $ insert cat 
+                setMessage [shamlet|
+                    <h1>
+                        Categoria cadastrado!
+                |]
+                redirect HomeR
+
+getCategoriaR :: Handler Html
+getCategoriaR = do 
+    (widgetUsu, enctype) <- generateFormPost formCategoria
+    msg <- getMessage
+    defaultLayout $ do 
+        addStylesheet $ StaticR css_bootstrap_css
+        $(whamletFile "templates/categoria.hamlet")
+        
+
+
+formArtigo :: Day -> Form Artigo
+formArtigo x2 = renderBootstrap $ (Artigo 
+        <$> areq (selectField listaCategoria) FieldSettings{fsId=Just "li",
+                           fsLabel="Categoria :",
+                           fsTooltip= Nothing,
+                           fsName= Nothing,
+                           fsAttrs=[("class","form-control"),("placeholder","EX: Policarpo Quaresma")]} Nothing
+                           
+        <*> areq textField "Nome: " Nothing
+        <*> pure x2 
+        
+    )
+    
+listaCategoria = do
+       entidades <- runDB $ selectList [] [Asc CategoriaNome] 
+       optionsPairs $ fmap (\ent -> (categoriaNome $ entityVal ent, entityKey ent)) entidades    
+       
+      
+diaHj :: IO Day
+diaHj = fmap utctDay getCurrentTime 
+
+getArtigoR :: Handler Html
+getArtigoR = do 
+    let x= "2008-04-18"
+    diaMat <- liftIO diaHj
+    (widgetArt, enctype) <- generateFormPost  (formArtigo diaMat)
+    msg <- getMessage
+    defaultLayout $ do 
+        addStylesheet $ StaticR css_bootstrap_css
+        $(whamletFile "templates/artigo.hamlet")
+        
+postArtigoR :: Handler Html
+postArtigoR = do 
+    let x= "2008-04-18"
+    diaMat <- liftIO diaHj
+    ((res,_),_) <- runFormPost (formArtigo diaMat)
+    case res of
+        FormSuccess (art) -> do 
+                runDB $ insert art 
+                setMessage [shamlet|
+                    <h1>
+                        Artigo cadastrado!
+                |]
+                redirect HomeR        
+                
+-- deletar a categoria de acordo com o categoriaId recebido
+deleteApagarArtigoR :: ArtigoId -> Handler TypedContent
+deleteApagarArtigoR artigoid = do  
+    _ <- runDB $ get404 artigoid
+    runDB $ delete artigoid
+    sendStatusJSON noContent204 (object [])
+                    
+-- para trazer todos as categorias .
+getListArtigosR :: Handler TypedContent
+getListArtigosR = do 
+    artigos <- runDB $ selectList [] [Asc ArtigoNome]
+    sendStatusJSON ok200 (object ["resp" .= artigos])                    

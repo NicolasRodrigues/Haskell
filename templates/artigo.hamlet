@@ -1,0 +1,8 @@
+$maybe mensa <- msg
+    <div class="alert alert-danger">
+        #{mensa}
+
+<div class="container">
+    <form action=@{ArtigoR} method=post enctype=#{enctype}>
+        ^{widgetArt}
+        <input type="submit" value="Cadastrar">

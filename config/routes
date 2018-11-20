@@ -17,6 +17,11 @@
 /categoria/teste4/#CategoriaId/apagar  ApagarCategoriaR DELETE
 /categoria/teste5/#CategoriaId/alterar         AlterarCategoriaR  PUT
 
+/usuario                   UsuarioR  GET POST
+/categoria                   CategoriaR  GET POST
+/artigo                   ArtigoR  GET POST
+/artigo/lista             ListArtigosR GET
+/artigo/#ArtigoId/apagar  ApagarArtigoR DELETE
 
 /cadastro     CadastroR     GET
 /dicas        DicasR        GET

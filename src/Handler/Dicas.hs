@@ -24,3 +24,4 @@ getDicasR = do
         $(whamletFile "templates/dicas.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")
         toWidget $(luciusFile "templates/footer.lucius")
+        

@@ -6,15 +6,16 @@
    
     <form action="" method="">
         <div class="form">
-            <label for="nome">Nome da dica 
-            <input type="text" id="nome" required>
+        
+            <label for="nome" id="nomeDica">Nome da dica 
+            <input type="text" id="nome" required autofocus>
             <br>
             <label for="desc">Descrição da dica
             <textarea id="desc" required>
             <br>
             <label for="passos">Passos para realização
             <br>
-            <label>1º Passo
+            <label id="fstPasso" for="passo1">1º Passo
             <textarea id="passo1" required>
             <br>
             <label for="passo2">2º Passo
@@ -22,7 +23,11 @@
             <br>
             <label for="passo3">3º Passo
             <textarea id="passo3" required>
-            <input type="submit" value="enviar">
+            
+            
+
+            
+            <input type="submit" value="Enviar">
 
         ^{widgetFooter}
 

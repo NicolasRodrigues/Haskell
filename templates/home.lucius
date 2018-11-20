@@ -1,7 +1,7 @@
 #main{
     margin: 0 auto;
     width: 50%;
-    height: 300px;
+    height: 600px;
     background-color: blue;
 }
 

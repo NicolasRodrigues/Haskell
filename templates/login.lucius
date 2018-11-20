@@ -1,13 +1,15 @@
-.cadastro{
-    width: 40%;
-    height: 450px;
+.outside{
+    width: 50%;
+    height: 800px;
     margin: 0 auto;
+    padding-top: 40px;
     background-color: white;
     margin-bottom: 0.2em;
     color: #666;
     display: block;
     border: 1px solid gray;
-    box-shadow: 10px 10px 10px 10px #ddd;}
+    box-shadow: 10px 10px 10px 10px #ddd;
+}
 
 .form{
     margin: 0 auto;
@@ -15,13 +17,12 @@
 }
 
 label{
-    margin:-30px;
-    font-color: black;
+    margin:-10px;
     font-size: 18px;
 }
 
 input[type=text]{
-    width: 107%;
+    width: 100%;
     padding: 5px 5px;
     margin: 5px 0;
     display: inline-block;
@@ -30,30 +31,25 @@ input[type=text]{
     box-sizing: border-box;
 }
 
-textarea{
+input[type=password]{
     width: 100%;
     padding: 5px 5px;
     margin: 5px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
 input[type=submit]{
-    margin: 0 auto;
-    width: 80%;
+    margin: 20 0 0 0 auto;
+    width: 100%;
     border: none;
+    background-color: #00b894;
     padding: 10px 10px;
     border-radius: 4px;
     cursor: pointer;
-    background-color: #4CAF50;
-    margin-left: 25px;
-    text-align: center;
-    color: #000000;
-}
-
-#fstPasso{
-    margin-top: 10px;
-}
-
-label::before{
-    content: "*";
-    color: red;
+    color: white;
+    font-weight: bold;
+    margin-top: 20px;
 }

@@ -1,6 +1,6 @@
 .cadastro{
     width: 50%;
-    height: 800px;
+    height: 500px;
     margin: 0 auto;
     background-color: white;
     margin-bottom: 0.2em;

@@ -23,6 +23,6 @@
             <label for="passo3">3º Passo
             <textarea id="passo3" required>
             <input type="submit" value="enviar">
-<div class="footer">
-    ^{widgetFooter}
+
+        ^{widgetFooter}
 

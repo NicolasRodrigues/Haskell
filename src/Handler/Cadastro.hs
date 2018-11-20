@@ -11,15 +11,14 @@ import Text.Lucius
 import Text.Julius
 import Database.Persist.Sql
 
-{-*
-formCadastro :: Form Cadastro
+{-* formCadastro :: Form Cadastro
 formCadastro = do
     <$> areq textField "Nome da dica: " Nothing
     <*> areq intField "Descrição da dica: " Nothing
     <*> areq textField "1ºPasso: " Nothing
     <*> areq textField "2ºPasso: " Nothing
     <*> areq textField "3ºPasso: " Nothing
-*-}
+-}
    
 widgetFooter :: Widget
 widgetFooter = $(whamletFile "templates/footer.hamlet")

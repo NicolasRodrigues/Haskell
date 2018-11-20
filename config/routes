@@ -17,6 +17,9 @@
 /categoria/teste4/#CategoriaId/apagar  ApagarCategoriaR DELETE
 /categoria/teste5/#CategoriaId/alterar         AlterarCategoriaR  PUT
 
+-- testando login
+
+/login        LoginUsuarioR    GET
 
 /cadastro     CadastroR     GET
 /dicas        DicasR        GET

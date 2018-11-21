@@ -4,5 +4,5 @@ $maybe mensa <- msg
 
 <div class="container">
     <form action=@{ArtigoR} method=post enctype=#{enctype}>
-        ^{widgetArt}
+        ^{widgetArt}        
         <input type="submit" value="Cadastrar">

@@ -30,14 +30,14 @@ Passos json
 	artigoid        ArtigoId
 	titulo          Text
 	caminhoFoto     Text
-	desc            Text	
+	desc            Textarea	
 	deriving Show
 
 InfoAdicional json
 	artigoid        ArtigoId
-	dicas           Text
-	aviso           Text
-	materiaisNec    Text	
+	dicas           Textarea
+	aviso           Textarea
+	materiaisNec    Textarea	
 	deriving Show 
 
 Empresa json

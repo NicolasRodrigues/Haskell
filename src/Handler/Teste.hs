@@ -12,7 +12,7 @@ import Text.Julius
 import Database.Persist.Sql
 import Control.Monad.Zip
 import Yesod.Form
-
+import Handler.Formulario
 
 formUsuario :: Form (Usuario, Text)
 formUsuario = renderBootstrap $  pure (,)
@@ -165,7 +165,7 @@ getCategoriaR = do
 
 formArtigo :: Day -> Form Artigo
 formArtigo x2 = renderBootstrap $ (Artigo 
-        <$> areq (selectField listaCategoria) FieldSettings{fsId=Just "li",
+        <$> areq (selectField listaCategoriaq) FieldSettings{fsId=Just "li",
                            fsLabel="Categoria :",
                            fsTooltip= Nothing,
                            fsName= Nothing,
@@ -176,7 +176,7 @@ formArtigo x2 = renderBootstrap $ (Artigo
         
     )
     
-listaCategoria = do
+listaCategoriaq = do
        entidades <- runDB $ selectList [] [Asc CategoriaNome] 
        optionsPairs $ fmap (\ent -> (categoriaNome $ entityVal ent, entityKey ent)) entidades    
        
@@ -187,7 +187,8 @@ diaHj = fmap utctDay getCurrentTime
 getArtigoR :: Handler Html
 getArtigoR = do 
     diaMat <- liftIO diaHj
-    (widgetArt, enctype) <- generateFormPost  (formArtigo diaMat)
+    (widgetArt, enctype) <- generateFormPost  (formeArtigo diaMat)
+    
     msg <- getMessage
     defaultLayout $ do 
         addStylesheet $ StaticR css_bootstrap_css
@@ -196,11 +197,13 @@ getArtigoR = do
 postArtigoR :: Handler Html
 postArtigoR = do 
     diaMat <- liftIO diaHj
-    ((res,_),_) <- runFormPost (formArtigo diaMat)
+    ((res,_),_) <- runFormPost (formeArtigo diaMat)
     case res of
         FormSuccess (art) -> do 
-                artigoid <- runDB $ insert art 
-                rumDB $ insert  $ Utilidades artigoid 0 0 0 0 
+                artigoid <- runDB $ insert $  (formeArt art)     -- inserindo o artigo
+                runDB $ insert  $ Utilidades artigoid 0 0 0 0  -- inicializando os contadores
+                runDB $ insert  $ formePasso  art artigoid   -- inserindo o passo da dica
+                runDB $ insert  $ formeInfo  art artigoid   -- inserindo informacoes adicionais
                 setMessage [shamlet|
                     <h1>
                         Artigo cadastrado!
@@ -215,7 +218,20 @@ deleteApagarArtigoR artigoid = do
     sendStatusJSON noContent204 (object [])
                     
 -- para trazer todos as categorias .
-getListArtigosR :: Handler TypedContent
+getListArtigosR :: Handler TypedContent 
 getListArtigosR = do 
     artigos <- runDB $ selectList [] [Asc ArtigoNome]
-    sendStatusJSON ok200 (object ["resp" .= artigos])                    
+    sendStatusJSON ok200 (object ["resp" .= artigos]) 
+     
+    
+--formPasso :: Form Passos
+---formPasso = renderBootstrap $ (Passos
+ ---       <$> pure 
+---        <*> areq textField "Título: " Nothing
+  ---      <*> pure "entrar o caminhodaFoto" 
+--        <*> areq textareaField FieldSettings{fsId=Just "campo4",
+ --                          fsLabel="Descricao",
+  --                         fsTooltip= Nothing,
+--                           fsName= Nothing,
+ --                          fsAttrs=[("class","form-control"),("placeholder","EX: Em uma terra muito muito distante..."),("style","display:inline-block")]} Nothing
+  --  )    

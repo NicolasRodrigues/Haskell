@@ -17,17 +17,14 @@
 /categoria/teste4/#CategoriaId/apagar  ApagarCategoriaR DELETE
 /categoria/teste5/#CategoriaId/alterar         AlterarCategoriaR  PUT
 
-<<<<<<< HEAD
 /usuario                   UsuarioR  GET POST
 /categoria                   CategoriaR  GET POST
 /artigo                   ArtigoR  GET POST
 /artigo/lista             ListArtigosR GET
 /artigo/#ArtigoId/apagar  ApagarArtigoR DELETE
-=======
--- testando login
+
 
 /login        LoginUsuarioR    GET
->>>>>>> 6257c4767d8afe4fd60cca9f7111d229106a0527
 
 /cadastro     CadastroR     GET
 /dicas        DicasR        GET

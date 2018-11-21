@@ -186,7 +186,6 @@ diaHj = fmap utctDay getCurrentTime
 
 getArtigoR :: Handler Html
 getArtigoR = do 
-    let x= "2008-04-18"
     diaMat <- liftIO diaHj
     (widgetArt, enctype) <- generateFormPost  (formArtigo diaMat)
     msg <- getMessage
@@ -196,17 +195,17 @@ getArtigoR = do
         
 postArtigoR :: Handler Html
 postArtigoR = do 
-    let x= "2008-04-18"
     diaMat <- liftIO diaHj
     ((res,_),_) <- runFormPost (formArtigo diaMat)
     case res of
         FormSuccess (art) -> do 
-                runDB $ insert art 
+                artigoid <- runDB $ insert art 
+                rumDB $ insert  $ Utilidades artigoid 0 0 0 0 
                 setMessage [shamlet|
                     <h1>
                         Artigo cadastrado!
                 |]
-                redirect HomeR        
+                redirect HomeR         
                 
 -- deletar a categoria de acordo com o categoriaId recebido
 deleteApagarArtigoR :: ArtigoId -> Handler TypedContent

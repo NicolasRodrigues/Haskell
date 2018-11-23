@@ -4,29 +4,9 @@
 
 <div class="cadastro">
    
-    <form action="" method="">
+    <form action=@{CadastroR} method="POST" enctype=#{enc}>
         <div class="form">
-        
-            <label for="nome" id="nomeDica">Nome da dica 
-            <input type="text" id="nome" required autofocus>
-            <br>
-            <label for="desc">Descrição da dica
-            <textarea id="desc" required>
-            <br>
-            <label for="passos">Passos para realização
-            <br>
-            <label id="fstPasso" for="passo1">1º Passo
-            <textarea id="passo1" required>
-            <br>
-            <label for="passo2">2º Passo
-            <textarea id="passo2" required>
-            <br>
-            <label for="passo3">3º Passo
-            <textarea id="passo3" required>
-            
-            
-
-            
+            ^{wid}
             <input type="submit" value="Enviar">
 
         ^{widgetFooter}

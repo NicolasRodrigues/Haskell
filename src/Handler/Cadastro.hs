@@ -11,14 +11,29 @@ import Text.Lucius
 import Text.Julius
 import Database.Persist.Sql
 
-{-* formCadastro :: Form Cadastro
-formCadastro = do
-    <$> areq textField "Nome da dica: " Nothing
-    <*> areq intField "Descrição da dica: " Nothing
-    <*> areq textField "1ºPasso: " Nothing
-    <*> areq textField "2ºPasso: " Nothing
-    <*> areq textField "3ºPasso: " Nothing
--}
+formCadastro :: Form (Artigo, (Passos, FileInfo), (Passos, FileInfo), (Passos, FileInfo))
+formCadastro = renderDivs $ (,,,) <$> (Artigo
+    <$> areq (selectField $ optionsPersistKey [] [] categoriaNome) "Categoria" Nothing
+    <*> areq textField "Nome da dica: " Nothing
+    <*> lift (liftIO getCurrentTime))
+    <*> ((,)
+    <$> (Passos
+    <$> pure (toSqlKey 0)
+    <*> areq textField "Titulo1" Nothing
+    <*> areq textareaField "Descrição1" Nothing)
+    <*> areq fileField "Foto1" Nothing)
+    <*> ((,)
+    <$> (Passos
+    <$> pure (toSqlKey 0)
+    <*> areq textField "Titulo2" Nothing
+    <*> areq textareaField "Descrição2" Nothing)
+    <*> areq fileField "Foto2" Nothing)
+    <*> ((,)
+    <$> (Passos
+    <$> pure (toSqlKey 0)
+    <*> areq textField "Titulo3" Nothing
+    <*> areq textareaField "Descrição3" Nothing)
+    <*> areq fileField "Foto3" Nothing)
    
 widgetFooter :: Widget
 widgetFooter = $(whamletFile "templates/footer.hamlet")
@@ -28,10 +43,27 @@ widgetMenu = $(whamletFile "templates/menu.hamlet")
 
 
 getCadastroR :: Handler Html
-getCadastroR = do 
+getCadastroR = do
+    (wid, enc) <- generateFormPost formCadastro
     defaultLayout $ do
         $(whamletFile "templates/cadastro.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")
         toWidget $(luciusFile "templates/footer.lucius")
         toWidget $(luciusFile "templates/cadastro.lucius")
-        
+
+postCadastroR :: Handler Html
+postCadastroR = do
+    ((res, _), _) <- runFormPost formCadastro
+    case res of
+        FormSuccess (art, (p1, f1), (p2, f2), (p3, f3)) -> do
+            (pid1, pid2, pid3) <- runDB $ do
+                aid <- insert art
+                pid1 <- insert $ p1 {passosArtigoid = aid} 
+                pid2 <- insert $ p2 {passosArtigoid = aid}
+                pid3 <- insert $ p3 {passosArtigoid = aid}
+                return (pid1, pid2, pid3)
+            liftIO $ fileMove f1 ("static" </> "fotos" </> (show $ fromSqlKey pid1))
+            liftIO $ fileMove f2 ("static" </> "fotos" </> (show $ fromSqlKey pid2))
+            liftIO $ fileMove f3 ("static" </> "fotos" </> (show $ fromSqlKey pid3))
+            redirect ArtigoR
+        _ -> redirect CadastroR 

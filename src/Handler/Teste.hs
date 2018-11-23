@@ -163,7 +163,7 @@ getCategoriaR = do
         
 
 
-formArtigo :: Day -> Form Artigo
+formArtigo :: UTCTime -> Form Artigo
 formArtigo x2 = renderBootstrap $ (Artigo 
         <$> areq (selectField listaCategoriaq) FieldSettings{fsId=Just "li",
                            fsLabel="Categoria :",
@@ -181,8 +181,8 @@ listaCategoriaq = do
        optionsPairs $ fmap (\ent -> (categoriaNome $ entityVal ent, entityKey ent)) entidades    
        
       
-diaHj :: IO Day
-diaHj = fmap utctDay getCurrentTime 
+diaHj :: IO UTCTime
+diaHj = getCurrentTime 
 
 getArtigoR :: Handler Html
 getArtigoR = do 

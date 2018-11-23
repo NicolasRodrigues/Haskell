@@ -14,7 +14,7 @@ Categoria json
 Artigo json
     categoriaid     CategoriaId 	
 	nome            Text
-	dataArt         Day
+	dataArt         UTCTime
 	UniqueArtigo    nome	
     deriving Show 
     
@@ -29,7 +29,6 @@ Utilidades json
 Passos json
 	artigoid        ArtigoId
 	titulo          Text
-	caminhoFoto     Text
 	desc            Textarea	
 	deriving Show
 

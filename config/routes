@@ -26,7 +26,7 @@
 
 /login        LoginUsuarioR    GET
 
-/cadastro     CadastroR     GET
+/cadastro     CadastroR     GET POST
 /dicas        DicasR        GET
 /sobre        SobreR        GET
 -- /aluno/listagem    ListaAlunoR GET

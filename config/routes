@@ -30,3 +30,7 @@
 /dicas        DicasR        GET
 /sobre        SobreR        GET
 -- /aluno/listagem    ListaAlunoR GET
+
+-- rota para exibir um artigo pelo id
+
+/showArtigo/#ArtigoId       MostraArtigoR GET

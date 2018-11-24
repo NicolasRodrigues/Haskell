@@ -38,7 +38,7 @@ formeArtigo x2 = renderBootstrap $ (Forme
                            fsLabel="Categoria :",
                            fsTooltip= Nothing,
                            fsName= Nothing,
-                           fsAttrs=[("class","form-control"),("placeholder","EX: Policarpo Quaresma")]} Nothing
+                           fsAttrs=[("class","form-control"),("placeholder","EX: Policarpo Quaresma"),("accept","image/jpeg")]} Nothing
                            
         <*> areq textField "Nome da Dica: " Nothing
         <*> pure x2 

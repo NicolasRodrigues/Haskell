@@ -21,19 +21,37 @@ formCadastro = renderDivs $ (,,,) <$> (Artigo
     <$> pure (toSqlKey 0)
     <*> areq textField "Titulo1" Nothing
     <*> areq textareaField "Descrição1" Nothing)
-    <*> areq fileField "Foto1" Nothing)
+    <*> areq fileField FieldSettings{fsId=Just "hident1",
+                                         fsLabel="Foto 1: ",
+                                         fsTooltip= Nothing,
+                                         fsName= Nothing,
+                                         fsAttrs=[("accept","image/jpeg")]} 
+                           Nothing)
     <*> ((,)
     <$> (Passos
     <$> pure (toSqlKey 0)
     <*> areq textField "Titulo2" Nothing
     <*> areq textareaField "Descrição2" Nothing)
-    <*> areq fileField "Foto2" Nothing)
+    <*> areq fileField  FieldSettings{fsId=Just "hident1",
+                                         fsLabel="Foto 2: ",
+                                         fsTooltip= Nothing,
+                                         fsName= Nothing,
+                                         fsAttrs=[("accept","image/jpeg")]} 
+                           Nothing)
     <*> ((,)
     <$> (Passos
     <$> pure (toSqlKey 0)
     <*> areq textField "Titulo3" Nothing
     <*> areq textareaField "Descrição3" Nothing)
-    <*> areq fileField "Foto3" Nothing)
+    <*> areq fileField 
+                           FieldSettings{fsId=Just "hident1",
+                                         fsLabel="Foto 3: ",
+                                         fsTooltip= Nothing,
+                                         fsName= Nothing,
+                                         fsAttrs=[("accept","image/jpeg")]} 
+                           Nothing)
+    
+    
    
 widgetFooter :: Widget
 widgetFooter = $(whamletFile "templates/footer.hamlet")

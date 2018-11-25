@@ -14,17 +14,13 @@ Categoria json
 Artigo json
     categoriaid     CategoriaId 	
 	nome            Text
-	dataArt         UTCTime
-	UniqueArtigo    nome	
-    deriving Show 
-    
-Utilidades json	
-	artigoid        ArtigoId
+	dataInc         Day
 	qtVisualizacao  Int
 	qtCurtidas      Int
 	qtNaoCurtidas   Int
 	qtAcesso        Int
-	deriving Show 
+	UniqueArtigo    nome	
+    deriving Show 
 
 Passos json
 	artigoid        ArtigoId

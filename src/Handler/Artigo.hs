@@ -15,57 +15,42 @@ import Database.Persist.Sql
 
 getMostraArtigoR :: ArtigoId -> Handler Html
 getMostraArtigoR aid = do
-    passos <- runDB $ selectList [PassosArtigoid ==. aid] [Asc PassosId]
     artigo <- runDB $ get404 aid
+    passos <- runDB $ selectList [PassosArtigoid ==. aid] [Asc PassosId]  
+    categoria  <- runDB $ selectFirst [CategoriaId ==. artigoCategoriaid artigo] []
+
     defaultLayout 
         [whamlet|
         <table class=table>
             <thead>
                 <tr>
                     <th>
-                        Nome:
-                    <td>
-                        #{artigoNome artigo}
-                    <th>
-                        Categoria:
-                    <td>
-                       
-                    <th>
-                        Data do artigo
-                    <td>
-                <tr>        
-                    <th>
-                        Passo 1: 
-                    <td>
-                        
+                        Nome do Artigo: #{artigoNome artigo}
                 <tr>
                     <th>
-                        Descrição:
-                    <td>
-                        
+                       $forall (Entity _ cat)  <- categoria
+                        Categoria: #{categoriaNome cat}
                 <tr>
                     <th>
-                        Passo 2:
-                    <td>
-                    
+                        Data do artigo: #{show $ artigoDataInc artigo}
+
+                    $forall (Entity chave passo) <- passos
+                        <tr>
+                            <th>
+                                <img src="https://projhaskell-danfatec13.c9users.io/static/fotos/#{fromSqlKey $ chave}">                    
+                        <tr>
+                            <th>
+                                Titulo Passo: #{passosTitulo passo}
+                        <tr>        
+                            <th>
+                                Descrição:  #{passosDesc passo}
                 <tr>
                     <th>
-                        Descrição:
-                    <td>
-                    
+                        Qt Visualização: #{artigoQtVisualizacao artigo}
                 <tr>
                     <th>
-                        Passos 3:
+                        Qt Curtidas: #{artigoQtCurtidas artigo}
                 <tr>
-                        Teste
-                    <td>
-                        #{artigoNome artigo}  
-                    <td>
-                        <label>
-                            
-                        #{show $ artigoDataArt artigo}
-               
-                    $forall (Entity _ passo) <- passos
-                        <td>
-                            #{passosTitulo passo}
+                    <th>
+                        Qt Não Curtidas: #{artigoQtNaoCurtidas artigo}
         |]

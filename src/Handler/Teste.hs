@@ -163,7 +163,7 @@ getCategoriaR = do
         
 
 
-formArtigo :: UTCTime -> Form Artigo
+formArtigo :: Day -> Form Artigo
 formArtigo x2 = renderBootstrap $ (Artigo 
         <$> areq (selectField listaCategoriaq) FieldSettings{fsId=Just "li",
                            fsLabel="Categoria :",
@@ -173,6 +173,10 @@ formArtigo x2 = renderBootstrap $ (Artigo
                            
         <*> areq textField "Nome: " Nothing
         <*> pure x2 
+        <*> pure 0
+        <*> pure 0 
+        <*> pure 0
+        <*> pure 0        
         
     )
     
@@ -181,8 +185,8 @@ listaCategoriaq = do
        optionsPairs $ fmap (\ent -> (categoriaNome $ entityVal ent, entityKey ent)) entidades    
        
       
-diaHj :: IO UTCTime
-diaHj = getCurrentTime 
+diaHj :: IO Day
+diaHj = fmap utctDay getCurrentTime 
 
 getArtigoR :: Handler Html
 getArtigoR = do 
@@ -201,7 +205,6 @@ postArtigoR = do
     case res of
         FormSuccess (art) -> do 
                 artigoid <- runDB $ insert $  (formeArt art)     -- inserindo o artigo
-                runDB $ insert  $ Utilidades artigoid 0 0 0 0  -- inicializando os contadores
                 runDB $ insert  $ formePasso  art artigoid   -- inserindo o passo da dica
                 runDB $ insert  $ formeInfo  art artigoid   -- inserindo informacoes adicionais
                 setMessage [shamlet|

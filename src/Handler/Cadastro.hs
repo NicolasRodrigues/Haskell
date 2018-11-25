@@ -11,11 +11,15 @@ import Text.Lucius
 import Text.Julius
 import Database.Persist.Sql
 
-formCadastro :: Form (Artigo, (Passos, FileInfo), (Passos, FileInfo), (Passos, FileInfo))
-formCadastro = renderDivs $ (,,,) <$> (Artigo
+formCadastro :: Day -> Form (Artigo, (Passos, FileInfo), (Passos, FileInfo), (Passos, FileInfo))
+formCadastro x2 = renderDivs $ (,,,) <$> (Artigo
     <$> areq (selectField $ optionsPersistKey [] [] categoriaNome) "Categoria" Nothing
     <*> areq textField "Nome da dica: " Nothing
-    <*> lift (liftIO getCurrentTime))
+    <*> pure x2
+    <*> pure 0
+    <*> pure 0 
+    <*> pure 0
+    <*> pure 0)
     <*> ((,)
     <$> (Passos
     <$> pure (toSqlKey 0)
@@ -59,10 +63,13 @@ widgetFooter = $(whamletFile "templates/footer.hamlet")
 widgetMenu :: Widget
 widgetMenu = $(whamletFile "templates/menu.hamlet")
 
+diaHj :: IO Day
+diaHj = fmap utctDay getCurrentTime 
 
 getCadastroR :: Handler Html
 getCadastroR = do
-    (wid, enc) <- generateFormPost formCadastro
+    diaInc <- liftIO diaHj
+    (wid, enc) <- generateFormPost (formCadastro diaInc)
     defaultLayout $ do
         $(whamletFile "templates/cadastro.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")
@@ -71,7 +78,8 @@ getCadastroR = do
 
 postCadastroR :: Handler Html
 postCadastroR = do
-    ((res, _), _) <- runFormPost formCadastro
+    diaInc <- liftIO diaHj
+    ((res, _), _) <- runFormPost (formCadastro diaInc)
     case res of
         FormSuccess (art, (p1, f1), (p2, f2), (p3, f3)) -> do
             (pid1, pid2, pid3) <- runDB $ do

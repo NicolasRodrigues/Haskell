@@ -1,0 +1,14 @@
+<hr />
+ <div id="list" class="row">
+  <div class="table-responsive col-md-12">
+   <table class="table table-striped" cellspacing="0" cellpadding="0">
+    <thead>
+     <tr>
+      <th>Código
+      <th>Título do Artigo
+
+    <tbody>
+     $forall (Entity pid art) <- artigos
+      <tr>
+       <td> #{fromSqlKey pid}
+       <td> #{ArtigoNome art}

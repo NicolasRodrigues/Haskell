@@ -18,8 +18,11 @@ getMostraArtigoR aid = do
     artigo <- runDB $ get404 aid
     passos <- runDB $ selectList [PassosArtigoid ==. aid] [Asc PassosId]  
     categoria  <- runDB $ selectFirst [CategoriaId ==. artigoCategoriaid artigo] []
+    info <- runDB $ selectList [InfoaddArtigoid ==. aid][]
 
-    defaultLayout 
+    defaultLayout $ do 
+        setTitle "Artigo"
+        addStylesheet $ (StaticR css_bootstrap_css)
         [whamlet|
         <table class=table>
             <thead>
@@ -53,4 +56,14 @@ getMostraArtigoR aid = do
                 <tr>
                     <th>
                         Qt Não Curtidas: #{artigoQtNaoCurtidas artigo}
+                $forall (Entity _ inf) <- info        
+                    <tr>
+                        <th>
+                            Observações: #{infoaddObservacoes inf}
+                    <tr>
+                        <th>
+                            Aviso: #{infoaddAviso inf}
+                    <tr>
+                        <th>
+                            Materiais Necessarios: #{infoaddMateriaisNec inf}
         |]

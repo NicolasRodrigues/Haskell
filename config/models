@@ -12,8 +12,8 @@ Categoria json
     deriving Show 
 
 Artigo json
-    categoriaid     CategoriaId 	
 	nome            Text
+    categoriaid     CategoriaId 	
 	dataInc         Day
 	qtVisualizacao  Int
 	qtCurtidas      Int
@@ -28,9 +28,9 @@ Passos json
 	desc            Textarea	
 	deriving Show
 
-InfoAdicional json
+Infoadd json
 	artigoid        ArtigoId
-	dicas           Textarea
+	observacoes     Textarea
 	aviso           Textarea
 	materiaisNec    Textarea	
 	deriving Show 

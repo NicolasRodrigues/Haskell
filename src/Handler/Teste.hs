@@ -165,13 +165,12 @@ getCategoriaR = do
 
 formArtigo :: Day -> Form Artigo
 formArtigo x2 = renderBootstrap $ (Artigo 
-        <$> areq (selectField listaCategoriaq) FieldSettings{fsId=Just "li",
+        <$> areq textField "Nome: " Nothing
+        <*> areq (selectField listaCategoriaq) FieldSettings{fsId=Just "li",
                            fsLabel="Categoria :",
                            fsTooltip= Nothing,
                            fsName= Nothing,
-                           fsAttrs=[("class","form-control"),("placeholder","EX: Policarpo Quaresma")]} Nothing
-                           
-        <*> areq textField "Nome: " Nothing
+                           fsAttrs=[("class","form-control"),("placeholder","EX: Policarpo Quaresma")]} Nothing        
         <*> pure x2 
         <*> pure 0
         <*> pure 0 

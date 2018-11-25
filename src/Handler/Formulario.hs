@@ -27,13 +27,13 @@ data Forme = Forme {    a :: CategoriaId    -- categoriaid
                     }
 
 formeArt :: Forme -> Artigo
-formeArt(Forme a b c w x y z d f g h i) = (Artigo a b c w x y z)
+formeArt(Forme a b c w x y z d f g h i) = (Artigo b a c w x y z)
                     
 formePasso :: Forme -> ArtigoId -> Passos
 formePasso (Forme a b c w x y z d f g h i) m = (Passos m d f)
                     
-formeInfo :: Forme -> ArtigoId -> InfoAdicional
-formeInfo (Forme a b c w x y z d f g h i)m = (InfoAdicional m g h i)
+formeInfo :: Forme -> ArtigoId -> Infoadd
+formeInfo (Forme a b c w x y z d f g h i)m = (Infoadd m g h i)
    
                                         
 formeArtigo :: Day -> Form Forme

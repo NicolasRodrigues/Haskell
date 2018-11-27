@@ -34,3 +34,4 @@
 -- rota para exibir um artigo pelo id
 
 /showArtigo/#ArtigoId       MostraArtigoR GET
+

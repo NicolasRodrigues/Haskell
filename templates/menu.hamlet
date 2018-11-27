@@ -4,5 +4,6 @@
   <a class="active" href=@{DicasR}>Ver nossas dicas
   <a class="active" href=@{SobreR}>Sobre
   <a class="active" id="rightElem" href=@{LoginUsuarioR}>Login
+  <a class="active"  id="rightElem" href=@{UsuarioR}>Cadastrar Usuario
   
 

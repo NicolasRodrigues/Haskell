@@ -10,6 +10,7 @@ import Import
 import Text.Lucius
 import Text.Julius
 import Database.Persist.Sql
+import Handler.Formulario
 
 formCadastro :: Day -> Form (Artigo, (Passos, FileInfo), (Passos, FileInfo), (Passos, FileInfo),Infoadd)
 formCadastro x2 = renderDivs $ (,,,,) 
@@ -68,6 +69,7 @@ widgetFooter = $(whamletFile "templates/footer.hamlet")
 widgetMenu :: Widget
 widgetMenu = $(whamletFile "templates/menu.hamlet")
 
+
 diaHj :: IO Day
 diaHj = fmap utctDay getCurrentTime 
 
@@ -99,3 +101,51 @@ postCadastroR = do
             liftIO $ fileMove f3 ("static" </> "fotos" </> (show $ fromSqlKey pid3))
             redirect ArtigoR
         _ -> redirect CadastroR 
+        
+
+{-
+
+formCadastro1 :: Day -> Maybe Artigo ->  Form Artigo
+formCadastro1 dia art = renderDivs 
+     $ (Artigo
+    <$> areq textField "Nome do Artigo: " (artigoNome <$> art)
+    <*> areq (selectField $ optionsPersistKey [] [] categoriaNome) "Categoria" Nothing
+    <*> pure dia
+    <*> pure 0 
+    <*> pure 0 
+    <*> pure 0
+    <*> pure 0)
+    
+
+getCadastro1R :: ArtigoId -> Handler Html
+getCadastro1R x = do
+    diaInc <- liftIO diaHj
+    artigo <- runDB $ get404 x 
+    (wid, enc) <- generateFormPost (formCadastro1 diaInc (transf(artigo)))
+    defaultLayout $ do
+        $(whamletFile "templates/cadastro.hamlet")
+        toWidget $(luciusFile "templates/menu.lucius")
+        toWidget $(luciusFile "templates/footer.lucius")
+        toWidget $(luciusFile "templates/cadastro.lucius")        
+
+postCadastro1R :: ArtigoId -> Handler Html
+postCadastro1R x = do
+    diaInc <- liftIO diaHj
+    artigo <- runDB $ get404 x
+    
+    ((res,_),_) <- runFormPost (formCadastro1 diaInc (transf(artigo)))
+    case res of
+        FormSuccess (cat) -> do 
+                runDB $ insert cat 
+                setMessage [shamlet|
+                    <h1>
+                        Categoria cadastrado!
+                |]
+                redirect HomeR        
+
+transf:: Artigo -> Maybe Artigo
+transf x = Nothing 
+transf x = Just x
+
+
+-}

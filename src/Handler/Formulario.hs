@@ -77,3 +77,4 @@ formeArtigo x2 = renderBootstrap $ (Forme
 listaCategoria = do
        entidades <- runDB $ selectList [] [Asc CategoriaNome] 
        optionsPairs $ fmap (\ent -> (categoriaNome $ entityVal ent, entityKey ent)) entidades   
+       

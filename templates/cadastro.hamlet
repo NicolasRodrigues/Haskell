@@ -1,9 +1,8 @@
 ^{widgetMenu}
 
-<h1> Cadastrar uma dica no nosso sistema
+<h1> Cadastrar uma dica no sistema
 
 <div class="cadastro">
-   
     <form action=@{CadastroR} method="POST" enctype=#{enc}>
         <div class="form">
             ^{wid}

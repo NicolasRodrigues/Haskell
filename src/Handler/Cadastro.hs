@@ -212,5 +212,9 @@ postCadastro1R aid = do
 transf:: Artigo -> Maybe Artigo
 transf x = Nothing 
 transf x = Just x
+<<<<<<< HEAD
 
 
+=======
+-}
+>>>>>>> f16813fb791ac38e239282debf76645342d699ea

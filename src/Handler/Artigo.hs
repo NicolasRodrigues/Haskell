@@ -66,4 +66,5 @@ getMostraArtigoR aid = do
                     <tr>
                         <th>
                             Materiais Necessarios: #{infoaddMateriaisNec inf}
+                    
         |]

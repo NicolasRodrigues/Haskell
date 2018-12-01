@@ -7,6 +7,7 @@
         #{artigoNome artes}
         $maybe Entity idPasso _ <- y
             <a href=@{MostraArtigoR idArtigo}><img src="static/fotos/#{fromSqlKey idPasso}">
+    
 <div id="main">
     
     

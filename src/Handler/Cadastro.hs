@@ -103,25 +103,82 @@ postCadastroR = do
         _ -> redirect CadastroR 
         
 
-{-
 
-formCadastro1 :: Day -> Maybe Artigo ->  Form Artigo
-formCadastro1 dia art = renderDivs 
-     $ (Artigo
-    <$> areq textField "Nome do Artigo: " (artigoNome <$> art)
-    <*> areq (selectField $ optionsPersistKey [] [] categoriaNome) "Categoria" Nothing
-    <*> pure dia
-    <*> pure 0 
-    <*> pure 0 
-    <*> pure 0
-    <*> pure 0)
+formCadastro1 :: Text -> CategoriaId -> Day -> 
+              Int -> Int -> Int -> Int -> PassosId -> Text -> Textarea -> PassosId -> Text -> Textarea -> PassosId -> Text -> Textarea -> InfoaddId
+              -> Textarea -> Textarea -> Textarea -> ArtigoId
+              -> Form (Artigo, (PassosId,Passos, Maybe FileInfo), (PassosId,Passos, Maybe FileInfo), (PassosId,Passos, Maybe FileInfo),(InfoaddId,Infoadd))
+formCadastro1 a b c d e f g h i j k l m n o p q r s t u= renderDivs $ (,,,,) 
+    <$> (Artigo
+    <$> areq textField "Nome do Artigo: " (Just a)
+    <*> areq (selectField $ optionsPersistKey [] [] categoriaNome) "Categoria" (Just b)    
+    <*> pure c
+    <*> pure d
+    <*> pure e 
+    <*> pure f
+    <*> pure g)
+    <*> ((,,)
+    <$> pure h
+    <*> (Passos
+    <$> pure u
+    <*> areq textField "Passo 1:" (Just i)
+    <*> areq textareaField "Descrição:" (Just j))
+    <*> aopt fileField FieldSettings{fsId=Just "hident1",
+                                         fsLabel="Foto 1: ",
+                                         fsTooltip= Nothing,
+                                         fsName= Nothing,
+                                         fsAttrs=[("accept","image/jpeg")]} 
+                           Nothing)
+    <*> ((,,)
+    <$> pure k
+    <*> (Passos
+    <$> pure u 
+    <*> areq textField "Passo 2:" (Just l)
+    <*> areq textareaField "Descrição:" (Just m))
+    <*> aopt fileField  FieldSettings{fsId=Just "hident1",
+                                         fsLabel="Foto 2: ",
+                                         fsTooltip= Nothing,
+                                         fsName= Nothing,
+                                         fsAttrs=[("accept","image/jpeg")]} 
+                           Nothing)
+    <*> ((,,)
+    <$> pure n
+    <*> (Passos
+    <$> pure u
+    <*> areq textField "Passo 3:" (Just o)
+    <*> areq textareaField "Descrição:" (Just p))
+    <*> areq fileField 
+                           FieldSettings{fsId=Just "hident1",
+                                         fsLabel="Foto 3: ",
+                                         fsTooltip= Nothing,
+                                         fsName= Nothing,
+                                         fsAttrs=[("accept","image/jpeg")]} 
+                           Nothing)
+    <*> ((,)
+    <$> pure q
+    <*>(Infoadd
+    <$> pure u
+    <*> areq textareaField "Observações: " (Just r)
+    <*> areq textareaField "Avisos: " (Just s)
+    <*> areq textareaField "Materiais Necessarios: " (Just t)))	                    
+
     
 
 getCadastro1R :: ArtigoId -> Handler Html
-getCadastro1R x = do
+getCadastro1R aid = do
     diaInc <- liftIO diaHj
-    artigo <- runDB $ get404 x 
-    (wid, enc) <- generateFormPost (formCadastro1 diaInc (transf(artigo)))
+    artigo <- runDB $ get404 aid 
+    [passo1,passo2,passo3]  <- runDB selectList [PassosArtigoId ==. aid][]
+    Just info   <- runDB selectFirst  [InfoaddArtigoId ==. aid][]
+
+        
+    (wid, enc) <- generateFormPost (formCadastro1 (artigoNome artigo) (artigoCategoriaid artigo) (diaInc) (artigoQtVisualizacao)
+                                    (artigoQtCurtidas artigo) (artigoQtNaoCurtidas artigo) (artigoQtAcesso artigo)
+                                    (entityKey passo1) (passosTitulo $ entityVal passo1) (passosDesc $ entityVal passo1)
+                                    (entityKey passo2) (passosTitulo $ entityVal passo2) (passosDesc $ entityVal passo2)
+                                    (entityKey passo3) (passosTitulo $ entityVal passo3) (passosDesc $ entityVal passo3)
+                                    (entityKey info)   (infoaddObservacoes $ entityVal info) 
+                                    (infoaddAviso $ entityVal info) (infoaddMateriaisNec $ entityVal info) (aid))  
     defaultLayout $ do
         $(whamletFile "templates/cadastro.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")
@@ -129,14 +186,23 @@ getCadastro1R x = do
         toWidget $(luciusFile "templates/cadastro.lucius")        
 
 postCadastro1R :: ArtigoId -> Handler Html
-postCadastro1R x = do
+postCadastro1R aid = do
     diaInc <- liftIO diaHj
-    artigo <- runDB $ get404 x
-    
-    ((res,_),_) <- runFormPost (formCadastro1 diaInc (transf(artigo)))
+    artigo <- runDB $ get404 aid 
+    [passo1,passo2,passo3]  <- runDB selectList [PassosArtigoId ==. aid][]
+    Just info   <- runDB selectFirst  [InfoaddArtigoId ==. aid][]
+
+    ((res,_),_) <- runFormPost (formCadastro1 (artigoNome artigo) (artigoCategoriaid artigo) (diaInc) (artigoQtVisualizacao)
+                                    (artigoQtCurtidas artigo) (artigoQtNaoCurtidas artigo) (artigoQtAcesso artigo)
+                                    (entityKey passo1) (passosTitulo $ entityVal passo1) (passosDesc $ entityVal passo1)
+                                    (entityKey passo2) (passosTitulo $ entityVal passo2) (passosDesc $ entityVal passo2)
+                                    (entityKey passo3) (passosTitulo $ entityVal passo3) (passosDesc $ entityVal passo3)
+                                    (entityKey info)   (infoaddObservacoes $ entityVal info) 
+                                    (infoaddAviso $ entityVal info) (infoaddMateriaisNec $ entityVal info))    
+
     case res of
-        FormSuccess (cat) -> do 
-                runDB $ insert cat 
+        FormSuccess(art, (p1, f1), (p2, f2), (p3, f3),info) -> do 
+                runDB $ replace aid art 
                 setMessage [shamlet|
                     <h1>
                         Categoria cadastrado!
@@ -148,4 +214,3 @@ transf x = Nothing
 transf x = Just x
 
 
--}

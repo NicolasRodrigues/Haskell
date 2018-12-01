@@ -146,6 +146,4 @@ postCadastro1R x = do
 transf:: Artigo -> Maybe Artigo
 transf x = Nothing 
 transf x = Just x
-
-
 -}

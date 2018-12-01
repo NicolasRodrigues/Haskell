@@ -14,7 +14,6 @@ import Control.Monad.Zip
 import Yesod.Form
 import Handler.Formulario
 
-
         
 --
 -- ============ USUARIO ============
@@ -200,4 +199,4 @@ getListArtigosR = do
   --                         fsTooltip= Nothing,
 --                           fsName= Nothing,
  --                          fsAttrs=[("class","form-control"),("placeholder","EX: Em uma terra muito muito distante..."),("style","display:inline-block")]} Nothing
-  --  )    
+  --  )  

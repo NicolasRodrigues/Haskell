@@ -3,6 +3,8 @@ $maybe mensa <- msg
         #{mensa}
 
 <div class="container">
-    <form action=@{UsuarioR} method=post enctype=#{enctype}>
-        ^{widgetUsu}
-        <input type="submit" value="Cadastrar">
+
+    <div class="form-group col-md-6">
+        <form action=@{UsuarioR} method=post class="form form-row" enctype=#{enctype}>
+            ^{widgetUsu}
+            <button class="btn btn-primary" type="submit">Cadastrar

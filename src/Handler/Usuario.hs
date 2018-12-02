@@ -14,8 +14,9 @@ import Control.Monad.Zip
 import Yesod.Form
 import Handler.Formulario
 
-
-
+-- type Form a = Html -> MForm Handler (FormResult a, Widget) 
+--Html -> MForm Handler (FormResult a, Widget)
+-- Html -> MForm Handler (FormResult (Usuario, Text), Widget)
 formUsuario :: Form (Usuario, Text)
 formUsuario = renderBootstrap $  pure (,)
     <*> (Usuario 
@@ -45,11 +46,19 @@ postUsuarioR = do
                 |]
                 redirect UsuarioR
 
+widgetFooter :: Widget
+widgetFooter = $(whamletFile "templates/footer.hamlet")
+
+widgetMenu :: Widget
+widgetMenu = $(whamletFile "templates/menu.hamlet")
+
 getUsuarioR :: Handler Html
 getUsuarioR = do 
     (widgetUsu, enctype) <- generateFormPost formUsuario
     msg <- getMessage
-    defaultLayout $ do 
-        addStylesheet $ StaticR css_bootstrap_css
+    defaultLayout $ do
+        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         $(whamletFile "templates/usuario.hamlet")
+        toWidget $(luciusFile "templates/menu.lucius")
+        toWidget $(luciusFile "templates/footer.lucius")
         

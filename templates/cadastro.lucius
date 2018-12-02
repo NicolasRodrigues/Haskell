@@ -1,13 +1,14 @@
 .cadastro{
     width: 40%;
-    height: 450px;
+    height: 1000px;
     margin: 0 auto;
-    background-color: white;
+    background-color: baby-green;
     margin-bottom: 0.2em;
     color: #666;
     display: block;
     border: 1px solid gray;
-    box-shadow: 10px 10px 10px 10px #ddd;}
+    box-shadow: 10px 10px 10px 10px #ddd;
+}
 
 .form{
     margin: 0 auto;
@@ -18,6 +19,7 @@ label{
     margin:-30px;
     font-color: black;
     font-size: 18px;
+    font-style: bold;
 }
 
 input[type=text]{
@@ -38,7 +40,7 @@ textarea{
 
 input[type=submit]{
     margin: 0 auto;
-    width: 80%;
+    width: 100%;
     border: none;
     padding: 10px 10px;
     border-radius: 4px;

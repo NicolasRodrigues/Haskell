@@ -35,4 +35,4 @@
 
 /showArtigo/#ArtigoId       MostraArtigoR GET
 
-/cadastro1     CadastroR1     GET POST
+-- /cadastro1     CadastroR1     GET POST

@@ -1,6 +1,4 @@
 ^{widgetMenu}
-
-
 <div class="header">
     <h1> Bem vindo ao Yesódia !
     $forall (Entity idArtigo artes, y) <- x

@@ -102,7 +102,7 @@ postCadastroR = do
             redirect ArtigoR
         _ -> redirect CadastroR 
         
-
+{-
 
 formCadastro1 :: Text -> CategoriaId -> Day -> 
               Int -> Int -> Int -> Int -> PassosId -> Text -> Textarea -> PassosId -> Text -> Textarea -> PassosId -> Text -> Textarea -> InfoaddId
@@ -162,7 +162,6 @@ formCadastro1 a b c d e f g h i j k l m n o p q r s t u= renderDivs $ (,,,,)
     <*> areq textareaField "Avisos: " (Just s)
     <*> areq textareaField "Materiais Necessarios: " (Just t)))	                    
 
-    
 
 getCadastro1R :: ArtigoId -> Handler Html
 getCadastro1R aid = do
@@ -212,9 +211,7 @@ postCadastro1R aid = do
 transf:: Artigo -> Maybe Artigo
 transf x = Nothing 
 transf x = Just x
-<<<<<<< HEAD
 
 
-=======
+
 -}
->>>>>>> f16813fb791ac38e239282debf76645342d699ea

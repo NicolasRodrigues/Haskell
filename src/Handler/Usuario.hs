@@ -35,14 +35,14 @@ postUsuarioR = do
             if (usuarioSenha usr) == passwordC then do
                 runDB $ insert usr 
                 setMessage [shamlet|
-                    <h1>
+                    <div class="alert alert-success">
                         Usuario cadastrado!
                 |]
                 redirect HomeR
             else do 
                 setMessage [shamlet|
-                    <h1>
-                        Senhas não conferem
+                    <div class="alert alert-danger">
+                        Senhas não conferem! Digite novamente.
                 |]
                 redirect UsuarioR
 

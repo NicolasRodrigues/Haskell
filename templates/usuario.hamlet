@@ -1,5 +1,5 @@
+^{widgetMenu}
 $maybe mensa <- msg
-    <div class="alert alert-danger">
         #{mensa}
 
 <div class="container">

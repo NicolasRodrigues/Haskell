@@ -21,7 +21,7 @@
 /categoria                   CategoriaR  GET POST
 /artigo                   ArtigoR  GET POST
 /artigo/lista             ListArtigosR GET
-/artigo/#ArtigoId/apagar  ApagarArtigoR DELETE
+/artigo/apagar/#ArtigoId  ApagarArtigoR DELETE
 
 
 /login        LoginUsuarioR    GET
@@ -35,4 +35,4 @@
 
 /showArtigo/#ArtigoId       MostraArtigoR GET
 
--- /cadastro1     CadastroR1     GET POST
+!/artigo/editar/#ArtigoId     EditarR    POST

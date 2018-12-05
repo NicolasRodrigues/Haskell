@@ -32,7 +32,8 @@ Infoadd json
 	artigoid        ArtigoId
 	observacoes     Textarea
 	aviso           Textarea
-	materiaisNec    Textarea	
+	materiaisNec    Textarea
+	UniqueInfoadd   artigoid
 	deriving Show 
 
 Empresa json

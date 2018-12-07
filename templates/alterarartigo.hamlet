@@ -1,0 +1,12 @@
+^{widgetMenu}
+
+<h1> Alterar Artigo
+
+<div class="editar">
+    <form action=@{EditarR aid} method="POST" enctype=#{enctype}>
+        <div class="form">
+            ^{widget}
+            <input type="submit" value="Trocar">
+
+        ^{widgetFooter}
+

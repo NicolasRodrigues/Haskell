@@ -20,6 +20,12 @@ import Data.Maybe (fromJust)
 
 --One trick we’ve introduced here is using the same handler code for both the GET and POST request methods. This is enabled by the implementation of runFormPost, which will behave exactly like generateFormPost in the case of a GET request. Using the same handler for both request methods cuts down on some boilerplate.
 
+widgetFooter :: Widget
+widgetFooter = $(whamletFile "templates/footer.hamlet")
+
+widgetMenu :: Widget
+widgetMenu = $(whamletFile "templates/menu.hamlet")
+
 getMostraArtigoR :: ArtigoId -> Handler Html
 getMostraArtigoR aid = do
     artigo <- runDB $ get404 aid
@@ -49,11 +55,11 @@ getMostraArtigoR aid = do
         _ -> defaultLayout $ do 
             setTitle "Artigo"
             addStylesheet $ (StaticR css_bootstrap_css)
-            [whamlet|
-                <form method="post" action=@{EditarR aid} enctype=#{enctype}>
-                    ^{widget}
-                    <button>Trocar
-            |]
+            $(whamletFile "templates/alterarartigo.hamlet")
+            toWidget $(luciusFile "templates/menu.lucius")
+            toWidget $(luciusFile "templates/footer.lucius")
+            toWidget $(luciusFile "templates/alterarartigo.lucius")            
+
     
 postEditarR :: ArtigoId -> Handler Html
 postEditarR aid = getMostraArtigoR aid
@@ -112,3 +118,20 @@ formEditar a b c d e f g h i j k l m n o p q r s t u = renderDivs $ (,,,,)
     <*> areq textareaField "Observações: " (Just r)
     <*> areq textareaField "Avisos: " (Just s)
     <*> areq textareaField "Materiais Necessarios: " (Just t)))	     
+    
+    
+    
+
+getMostraArtigo1R :: ArtigoId -> Handler Html
+getMostraArtigo1R aid = do
+    artigo <- runDB $ get404 aid
+    [Entity passoid1 p1, Entity passoid2 p2, Entity passoid3 p3] <- runDB $ selectList [PassosArtigoid ==. aid] [Asc PassosId]  
+    categoria  <- runDB $ selectFirst [CategoriaId ==. artigoCategoriaid artigo] []
+    [Entity iid info] <- runDB $ selectList [InfoaddArtigoid ==. aid][]
+    defaultLayout $ do 
+        setTitle "Artigo"
+        addStylesheet $ (StaticR css_bootstrap_css)
+        $(whamletFile "templates/exibirartigo.hamlet")
+        toWidget $(luciusFile "templates/menu.lucius")
+        toWidget $(luciusFile "templates/footer.lucius")
+        toWidget $(luciusFile "templates/alterarartigo.lucius")         

@@ -1,0 +1,66 @@
+^{widgetMenu}
+
+<h1> Exibir Artigo
+
+<div class="exibir">
+        <table class=table>
+            <thead>
+                <tr>
+                    <th>
+                        Nome do Artigo: #{artigoNome artigo}
+                <tr>
+                    <th>
+                       $forall (Entity _ cat)  <- categoria
+                        Categoria: #{categoriaNome cat}
+                <tr>
+                    <th>
+                        Data do artigo: #{show $ artigoDataInc artigo}
+
+                <tr>
+                    <th>
+                        <img src="https://projhaskell-danfatec13.c9users.io/static/fotos/#{fromSqlKey $ passoid1}">                    
+                <tr>
+                    <th>
+                        Titulo Passo: #{passosTitulo p1}
+                <tr>        
+                    <th>
+                        Descrição:  #{passosDesc p1}
+                <tr>
+                    <th>
+                        <img src="https://projhaskell-danfatec13.c9users.io/static/fotos/#{fromSqlKey $ passoid2}">                    
+                <tr>
+                    <th>
+                        Titulo Passo: #{passosTitulo p2}
+                <tr>        
+                    <th>
+                        Descrição:  #{passosDesc p2}       
+                <tr>
+                    <th>
+                        <img src="https://projhaskell-danfatec13.c9users.io/static/fotos/#{fromSqlKey $ passoid3}">                    
+                <tr>
+                    <th>
+                        Titulo Passo: #{passosTitulo p3}
+                <tr>        
+                    <th>
+                        Descrição:  #{passosDesc p3}                           
+                <tr>
+                    <th>
+                        Qt Visualização: #{artigoQtVisualizacao artigo}
+                <tr>
+                    <th>
+                        Qt Curtidas: #{artigoQtCurtidas artigo}
+                <tr>
+                    <th>
+                        Qt Não Curtidas: #{artigoQtNaoCurtidas artigo}
+                <tr>
+                    <th>
+                        Observações: #{infoaddObservacoes info}
+                <tr>
+                    <th>
+                        Aviso: #{infoaddAviso info}
+                <tr>
+                    <th>
+                        Materiais Necessarios: #{infoaddMateriaisNec info}
+
+        ^{widgetFooter}
+

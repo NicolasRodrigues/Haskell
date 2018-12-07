@@ -33,6 +33,8 @@
 
 -- rota para exibir um artigo pelo id
 
-/showArtigo/#ArtigoId       MostraArtigoR GET
+/alterarArtigo/#ArtigoId       MostraArtigoR GET
 
 !/artigo/editar/#ArtigoId     EditarR    POST
+
+/showArtigo/#ArtigoId       MostraArtigo1R GET

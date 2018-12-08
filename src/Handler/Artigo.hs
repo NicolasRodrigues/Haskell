@@ -24,7 +24,9 @@ widgetFooter :: Widget
 widgetFooter = $(whamletFile "templates/footer.hamlet")
 
 widgetMenu :: Widget
-widgetMenu = $(whamletFile "templates/menu.hamlet")
+widgetMenu = do
+    sess <- lookupSession "_USR"
+    $(whamletFile "templates/menu.hamlet")
 
 getMostraArtigoR :: ArtigoId -> Handler Html
 getMostraArtigoR aid = do

@@ -50,14 +50,16 @@ widgetFooter :: Widget
 widgetFooter = $(whamletFile "templates/footer.hamlet")
 
 widgetMenu :: Widget
-widgetMenu = $(whamletFile "templates/menu.hamlet")
+widgetMenu = do
+    sess <- lookupSession "_USR"
+    $(whamletFile "templates/menu.hamlet")
 
 getUsuarioR :: Handler Html
 getUsuarioR = do 
     (widgetUsu, enctype) <- generateFormPost formUsuario
     msg <- getMessage
     defaultLayout $ do
-        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        addStylesheet $ StaticR css_bootstrap_css
         $(whamletFile "templates/usuario.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")
         toWidget $(luciusFile "templates/footer.lucius")

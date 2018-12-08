@@ -2,19 +2,15 @@
 
 <h1> Logar no nosso sistema
 
-<div class="outside">
+$maybe mensa <- msg
+    <div class="alert alert-danger">
+        #{mensa}
 
-    <form action="" method="">
-        <div class="form">
-            <label for="usuario">Usuario:
-            <br>
-            <input type="text" id="usuario" required>
-            <br>
-            <label for="senha">Senha:
-            <br>
-            <input type="password" id="senha" required>
-            <br>
-            <input type="submit" value="Log in">
+<div class="container">
+    <form action=@{LoginR} method=post enctype=#{enctype}>
+        ^{widgetLogin}
+        <input type="submit" value="Login">
+        
 <div class="footer">
     ^{widgetFooter}
 

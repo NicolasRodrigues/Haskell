@@ -20,10 +20,19 @@ data App = App
     }
 
 mkYesodData "App" $(parseRoutesFile "config/routes")
+
 type Form a = Html -> MForm Handler (FormResult a, Widget)
 
 instance Yesod App where
     makeLogger = return . appLogger
+    authRoute _ = Just LoginR
+    isAuthorized HomeR _ = return Authorized
+    isAuthorized UsuarioR _ = return Authorized
+    isAuthorized LoginR _ = return Authorized
+    --isAuthorized AdminR _ = ehAdmin 
+    isAuthorized (ApagarR _) _ = ehAdmin
+    isAuthorized _ _ = ehUsuario
+    
 
 instance YesodPersist App where
     type YesodPersistBackend App = SqlBackend
@@ -37,3 +46,15 @@ instance RenderMessage App FormMessage where
 instance HasHttpManager App where
     getHttpManager = appHttpManager
 
+ehUsuario = do 
+    logado <- lookupSession "_USR"
+    case logado of 
+        Just _ -> return Authorized
+        Nothing -> return AuthenticationRequired
+        
+ehAdmin = do 
+    logado <- lookupSession "_USR"
+    case logado of 
+        Just "admin" -> return Authorized
+        Just _ -> return $ Unauthorized "Vc n eh admin!"
+        Nothing -> return AuthenticationRequired

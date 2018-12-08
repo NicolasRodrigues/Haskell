@@ -3,7 +3,8 @@
   <a class="active" href=@{CadastroR}>Cadastrar dicas
   <a class="active" href=@{DicasR}>Ver nossas dicas
   <a class="active" href=@{SobreR}>Sobre
-  <a class="active" id="rightElem" href=@{LoginUsuarioR}>Login
+  $maybe _ <- sess
+      <a class="active" id="rightElem"  href=@{LogoutR}>Sair            
+  $nothing      
+      <a class="active" id="rightElem" href=@{LoginR}>Login
   <a class="active"  id="rightElem" href=@{UsuarioR}>Cadastrar Usuario
-  
-

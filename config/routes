@@ -23,9 +23,6 @@
 /artigo/lista             ListArtigosR GET
 /artigo/apagar/#ArtigoId  ApagarArtigoR DELETE
 
-
-/login        LoginUsuarioR    GET
-
 /cadastro     CadastroR     GET POST
 /dicas        DicasR        GET
 /sobre        SobreR        GET
@@ -38,3 +35,6 @@
 !/artigo/editar/#ArtigoId     EditarR    POST
 
 /showArtigo/#ArtigoId       MostraArtigo1R GET
+
+/login      LoginR               GET POST
+/logout     LogoutR              GET

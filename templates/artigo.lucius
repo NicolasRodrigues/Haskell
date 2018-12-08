@@ -1,0 +1,14 @@
+.foto{
+    margin: 0 auto;
+    width: 30%;
+    width: 50%;
+    height: 800px;
+    margin: 0 auto;
+    padding-top: 40px;
+    background-color: white;
+    margin-bottom: 0.2em;
+    color: #666;
+    display: block;
+    border: 1px solid gray;
+    box-shadow: 10px 10px 10px 10px #ddd;
+}

@@ -34,11 +34,11 @@
 
 -- rota para exibir um artigo pelo id
 
-/alterarArtigo/#ArtigoId       MostraArtigoR GET
+/alterarArtigo/#ArtigoId       AlterarArtigoR GET
 
 !/artigo/editar/#ArtigoId     EditarR    POST
 
-/showArtigo/#ArtigoId       MostraArtigo1R GET
+/showArtigo/#ArtigoId       MostrarArtigoR GET
 
 /login      LoginR               GET POST
 /logout     LogoutR              GET

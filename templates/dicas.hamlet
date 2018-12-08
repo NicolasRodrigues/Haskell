@@ -2,9 +2,14 @@
 <h1> teste
 
 <div>
-     $forall (Entity idArtigo artes, y) <- x
-        #{artigoNome artes}
-        $maybe Entity idPasso _ <- y
-            <a href=@{MostraArtigoR idArtigo}><img src="static/fotos/#{fromSqlKey idPasso}">
+
+
+<div class="container">
+  <div class="row">
+     $forall (Entity idArtigo artes, y) <- x  
+         <div class="col-sm-4">
+             <h3>#{artigoNome artes}
+             $maybe Entity idPasso _ <- y
+                 <a href=@{MostrarArtigoR idArtigo}><img src="static/fotos/#{fromSqlKey idPasso}">
 
 ^{widgetFooter}

@@ -28,8 +28,8 @@ widgetMenu = do
     sess <- lookupSession "_USR"
     $(whamletFile "templates/menu.hamlet")
 
-getMostraArtigoR :: ArtigoId -> Handler Html
-getMostraArtigoR aid = do
+getAlterarArtigoR :: ArtigoId -> Handler Html
+getAlterarArtigoR aid = do
     artigo <- runDB $ get404 aid
     [Entity passoid1 p1, Entity passoid2 p2, Entity passoid3 p3] <- runDB $ selectList [PassosArtigoid ==. aid] [Asc PassosId]  
     categoria  <- runDB $ selectFirst [CategoriaId ==. artigoCategoriaid artigo] []
@@ -64,7 +64,7 @@ getMostraArtigoR aid = do
 
     
 postEditarR :: ArtigoId -> Handler Html
-postEditarR aid = getMostraArtigoR aid
+postEditarR aid = getAlterarArtigoR aid
         
 formEditar :: Text -> CategoriaId -> Day -> Int -> Int -> Int -> Int -> PassosId -> Text -> Textarea -> PassosId -> Text -> Textarea -> PassosId -> Text -> Textarea -> InfoaddId -> Textarea -> Textarea -> Textarea -> ArtigoId
     -> Form (Artigo, (PassosId, Passos, Maybe FileInfo), (PassosId, Passos, Maybe FileInfo), (PassosId, Passos, Maybe FileInfo),(InfoaddId, Infoadd))
@@ -124,8 +124,8 @@ formEditar a b c d e f g h i j k l m n o p q r s t u = renderDivs $ (,,,,)
     
     
 
-getMostraArtigo1R :: ArtigoId -> Handler Html
-getMostraArtigo1R aid = do
+getMostrarArtigoR :: ArtigoId -> Handler Html
+getMostrarArtigoR aid = do
     artigo <- runDB $ get404 aid
     [Entity passoid1 p1, Entity passoid2 p2, Entity passoid3 p3] <- runDB $ selectList [PassosArtigoid ==. aid] [Asc PassosId]  
     categoria  <- runDB $ selectFirst [CategoriaId ==. artigoCategoriaid artigo] []

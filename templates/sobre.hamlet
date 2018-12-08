@@ -1,4 +1,8 @@
 ^{widgetMenu}
-<h1> mais um teste
+
+<div class="container">
+    <form action=@{SobreR} method=post enctype=#{enctype}>
+        ^{widgetSobre}        
+        <input type="submit" value="Cadastrar">
 
 ^{widgetFooter}

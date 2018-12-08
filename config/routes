@@ -25,7 +25,9 @@
 
 /cadastro     CadastroR     GET POST
 /dicas        DicasR        GET
-/sobre        SobreR        GET
+/sobre        SobreR        GET 
+!/sobre/editar     SobreER    POST
+
 -- /aluno/listagem    ListaAlunoR GET
 
 -- rota para exibir um artigo pelo id

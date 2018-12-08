@@ -92,7 +92,7 @@ postCadastroR = do
     case res of
         FormSuccess (art, (p1, f1), (p2, f2), (p3, f3),info) -> do
             (pid1, pid2, pid3) <- runDB $ do
-                aid <- insert art
+                aid  <- insert art
                 inf1 <- insert $ info {infoaddArtigoid =aid}                
                 pid1 <- insert $ p1 {passosArtigoid = aid} 
                 pid2 <- insert $ p2 {passosArtigoid = aid}
@@ -105,58 +105,3 @@ postCadastroR = do
         _ -> redirect CadastroR 
         
 
-               
-{-
-
-getCadastro1R :: ArtigoId -> Handler Html
-getCadastro1R aid = do
-    diaInc <- liftIO diaHj
-    artigo <- runDB $ get404 aid 
-    [passo1,passo2,passo3]  <- runDB selectList [PassosArtigoId ==. aid][]
-    Just info   <- runDB selectFirst  [InfoaddArtigoId ==. aid][]
-
-        
-    (wid, enc) <- generateFormPost (formCadastro1 (artigoNome artigo) (artigoCategoriaid artigo) (diaInc) (artigoQtVisualizacao)
-                                    (artigoQtCurtidas artigo) (artigoQtNaoCurtidas artigo) (artigoQtAcesso artigo)
-                                    (entityKey passo1) (passosTitulo $ entityVal passo1) (passosDesc $ entityVal passo1)
-                                    (entityKey passo2) (passosTitulo $ entityVal passo2) (passosDesc $ entityVal passo2)
-                                    (entityKey passo3) (passosTitulo $ entityVal passo3) (passosDesc $ entityVal passo3)
-                                    (entityKey info)   (infoaddObservacoes $ entityVal info) 
-                                    (infoaddAviso $ entityVal info) (infoaddMateriaisNec $ entityVal info) (aid))  
-    defaultLayout $ do
-        $(whamletFile "templates/cadastro.hamlet")
-        toWidget $(luciusFile "templates/menu.lucius")
-        toWidget $(luciusFile "templates/footer.lucius")
-        toWidget $(luciusFile "templates/cadastro.lucius")        
-
-postCadastro1R :: ArtigoId -> Handler Html
-postCadastro1R aid = do
-    diaInc <- liftIO diaHj
-    artigo <- runDB $ get404 aid 
-    [passo1,passo2,passo3]  <- runDB selectList [PassosArtigoId ==. aid][]
-    Just info   <- runDB selectFirst  [InfoaddArtigoId ==. aid][]
-
-    ((res,_),_) <- runFormPost (formCadastro1 (artigoNome artigo) (artigoCategoriaid artigo) (diaInc) (artigoQtVisualizacao)
-                                    (artigoQtCurtidas artigo) (artigoQtNaoCurtidas artigo) (artigoQtAcesso artigo)
-                                    (entityKey passo1) (passosTitulo $ entityVal passo1) (passosDesc $ entityVal passo1)
-                                    (entityKey passo2) (passosTitulo $ entityVal passo2) (passosDesc $ entityVal passo2)
-                                    (entityKey passo3) (passosTitulo $ entityVal passo3) (passosDesc $ entityVal passo3)
-                                    (entityKey info)   (infoaddObservacoes $ entityVal info) 
-                                    (infoaddAviso $ entityVal info) (infoaddMateriaisNec $ entityVal info))    
-
-    case res of
-        FormSuccess(art, (p1, f1), (p2, f2), (p3, f3),info) -> do 
-                runDB $ replace aid art 
-                setMessage [shamlet|
-                    <h1>
-                        Categoria cadastrado!
-                |]
-                redirect HomeR        
-
-transf:: Artigo -> Maybe Artigo
-transf x = Nothing 
-transf x = Just x
-
-
-
--}

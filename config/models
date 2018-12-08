@@ -36,9 +36,9 @@ Infoadd json
 	UniqueInfoadd   artigoid
 	deriving Show 
 
-Empresa json
-	comoSomos       Text 	
-	comoFunciona    Text 	
-	comoPossoAjudar Text 	
-	comoContribuir  Text 	
+Sobre json
+	comoSomos       Textarea 	
+	comoFunciona    Textarea
+	comoPossoAjudar Textarea
+	comoContribuir  Textarea 
 	deriving Show 

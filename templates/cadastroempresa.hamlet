@@ -1,0 +1,11 @@
+^{widgetMenu}
+
+<h1> Alterar informações da empresa
+
+<div class="editar">
+    <form action=@{SobreER} method="POST" enctype=#{enctype}>
+        <div class="form">
+            ^{widget}
+            <input type="submit" value="Alterar">
+
+        ^{widgetFooter}

@@ -47,3 +47,14 @@ formSobre a b c d = renderBootstrap $ (Sobre
 postSobreER :: Handler Html
 postSobreER = getSobreR 
             
+            
+
+
+getSobreExibirR :: Handler Html
+getSobreExibirR = do 
+    [Entity iid info] <- runDB $ selectList [][Asc SobreId]
+    defaultLayout $ do 
+        addStylesheet $ (StaticR css_bootstrap_css)        
+        $(whamletFile "templates/sobre.hamlet")
+        toWidget $(luciusFile "templates/menu.lucius")
+        toWidget $(luciusFile "templates/footer.lucius")            

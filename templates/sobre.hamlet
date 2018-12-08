@@ -1,8 +1,22 @@
 ^{widgetMenu}
 
-<div class="container">
-    <form action=@{SobreR} method=post enctype=#{enctype}>
-        ^{widgetSobre}        
-        <input type="submit" value="Cadastrar">
+<h1> Informações da Empresa
 
-^{widgetFooter}
+<div class="exibir">
+        <table class=table>
+            <thead>
+                <tr>
+                    <th>
+                        Como somos: #{sobreComoSomos info}
+                <tr>
+                    <th>
+                        Como funciona: #{sobreComoFunciona info}
+                <tr>
+                    <th>
+                        Como posso ajudar: #{sobreComoPossoAjudar info}
+                <tr>        
+                    <th>
+                        Como contribuir:  #{sobreComoContribuir info}
+
+        ^{widgetFooter}
+

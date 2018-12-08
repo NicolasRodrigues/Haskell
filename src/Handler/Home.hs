@@ -7,12 +7,11 @@
 module Handler.Home where
 
 import Import
+import Text.Show(show)
 import Text.Lucius
 import Text.Julius
 import Text.Show(show)
 import Database.Persist.Sql
-
-
 
 widgetMenu :: Widget
 widgetMenu = do
@@ -26,6 +25,7 @@ getHomeR :: Handler Html
 getHomeR = do 
     sess <- lookupSession "_USR"
     nomeDica <- runDB $ selectList [] [Asc ArtigoNome]
+    --ftQt <- runDB $ selectList [] [Asc ArtigoId]
     foto <- mapM (\(Entity artigoid _) -> runDB $ selectFirst [PassosArtigoid ==. artigoid] []) nomeDica
     let x = zip nomeDica foto    
     putStrLn $ pack $ "============================================"
@@ -38,4 +38,3 @@ getHomeR = do
         toWidget $(luciusFile "templates/home.lucius")
         toWidget $(luciusFile "templates/menu.lucius")
         toWidget $(luciusFile "templates/footer.lucius")
-

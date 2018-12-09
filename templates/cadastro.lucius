@@ -1,13 +1,13 @@
 .cadastro{
-    width: 49%;
-    height: 1100px;
+    width: 48%;
+    height: 75%;
     margin: 0 auto;
     background-color: baby-green;
     margin-bottom: 0.2em;
     color: #666;    
     display: block;
     border: 1px solid gray;
-    border-radiu: 2px;
+    border-radius: 10px;
     box-shadow: 10px 10px 10px 10px #ddd;
 }
 
@@ -56,7 +56,7 @@ input[type=submit]{
     cursor: pointer;
     background-color: #4CAF50;
     text-align: center;
-    color: #000000;
+    color: white;
     margin-left: 60px;
 }
 

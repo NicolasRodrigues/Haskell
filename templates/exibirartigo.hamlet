@@ -15,7 +15,7 @@
                 <tr>
                     <th>
                         Data do artigo: #{show $ artigoDataInc artigo}
-            <body>
+            <tbody>
                 <tr>
                     <th>
                         <img src="https://projhaskell-danfatec13.c9users.io/static/fotos/#{fromSqlKey $ passoid1}">                    

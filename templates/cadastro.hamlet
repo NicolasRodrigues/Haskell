@@ -6,7 +6,7 @@
     <form action=@{CadastroR} method="POST" enctype=#{enc}>
         <div class="form">
             ^{wid}
-            <input type="submit" value="Enviar">
+            <input type="submit" value="Enviar" class="btn btn-success">
 
         ^{widgetFooter}
 

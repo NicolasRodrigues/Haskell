@@ -139,6 +139,7 @@ getMostrarArtigoR aid = do
         toWidget $(luciusFile "templates/menu.lucius")
         toWidget $(luciusFile "templates/footer.lucius")
         toWidget $(luciusFile "templates/alterarartigo.lucius")
+        toWidget $(luciusFile "templates/exibirartigo.lucius")
         addStylesheet $ (StaticR css_bootstrap_css)
 
 

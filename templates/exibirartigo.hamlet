@@ -18,7 +18,7 @@
 
                 <tr>
                     <th>
-                        <img src="https://projhaskell-danfatec13.c9users.io/static/fotos/#{fromSqlKey $ passoid1}">                    
+                        <img src="/static/fotos/#{fromSqlKey $ passoid1}">                    
                 <tr>
                     <th>
                         Titulo Passo: #{passosTitulo p1}

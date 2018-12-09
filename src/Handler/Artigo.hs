@@ -139,8 +139,3 @@ getMostrarArtigoR aid = do
         toWidget $(luciusFile "templates/footer.lucius")
         toWidget $(luciusFile "templates/alterarartigo.lucius")         
 
-
-getApagarArtigoR :: ArtigoId ->  Handler Html
-getApagarArtigoR aid = do  
-    runDB $ deleteCascade  aid
-    redirect HomeR            

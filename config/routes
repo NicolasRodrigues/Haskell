@@ -7,12 +7,11 @@
 
 
 /artigo                   ArtigoR       GET POST
-/artigo/lista             ListArtigosR  GET
-/artigo/apagar/#ArtigoId  ApagarArtigoR DELETE
 
 /cadastro     CadastroR     GET POST
 /dicas        DicasR        GET
-/pesquisa     Pesq2R        GET
+/buscar        PesqArtigoR        POST
+!/buscartigo/#Text      BuscarArtigoR   GET
 
 
 
@@ -20,7 +19,10 @@
 
 /alterarArtigo/#ArtigoId      AlterarArtigoR GET
 !/artigo/editar/#ArtigoId     EditarR        POST
-/showArtigo/#ArtigoId         MostrarArtigoR GET
+!/showArtigo/#ArtigoId        MostrarArtigoR GET
+/artigo/lista                 ListArtigosR   GET 
+/artigo/lista2                ListaArtigoR   GET 
+/artigo/apagar/#ArtigoId      ApagarArtigoR GET
 
 /login      LoginR               GET POST
 /logout     LogoutR              GET

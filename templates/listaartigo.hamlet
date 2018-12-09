@@ -1,0 +1,27 @@
+^{widgetMenu}
+
+<h1> Exibir Lista de Artigos
+
+<div class="exibir">
+    <table class="table">
+               <thead>
+                    <tr>
+                        <th>
+                            Nome 
+                        <th>
+                            Alterar 
+                        <th>
+                            Deletar
+                <tbody>
+                    $forall (Entity iid info) <- art
+                        <tr>
+                            <td>
+                                #{artigoNome info}
+                            <td>
+                                <form action=@{AlterarArtigoR iid} method=get>
+                                    <input type="submit" value="Alterar">
+                            <td>
+                                <form action=@{ApagarArtigoR iid} method=get>
+                                    <input type="submit" value="Deletar">
+
+ ^{widgetFooter}

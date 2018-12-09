@@ -5,14 +5,18 @@
 
 
 <div class="container">
-  <form action=@{Pesq2R} method=get >
-        <input type="submit" value="Pesquisar">
+<form .form-horizontal role=form action=@{PesqArtigoR} method=post enctype=#{enctype}>
+     <table>
+      <tr>
+       <td>^{widget}
+       <td style="vertical-align:bottom; padding-left:50px"><button type="submit" value="Pesquisar" class="btn btn-primary"> <span class="glyphicon glyphicon-search">
+
   <div class="row">
      $forall (Entity idArtigo artes, y) <- x  
          <div class="col-sm-4">
              <h3>#{artigoNome artes}
              $maybe Entity idPasso _ <- y
-                 <a href=@{MostrarArtigoR idArtigo}><img src="static/fotos/#{fromSqlKey idPasso}">
+                 <a href=@{MostrarArtigoR idArtigo}><img src="https://projhaskell-danfatec13.c9users.io/static/fotos/#{fromSqlKey idPasso}">
                  
 
 ^{widgetFooter}

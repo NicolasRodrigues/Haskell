@@ -1,16 +1,18 @@
 <div class="topnav">
   <a class="active" href=@{HomeR}>Início
-  <a class="active" href=@{CadastroR}>Cadastrar dicas
   <a class="active" href=@{DicasR}>Ver nossas dicas
-  <a class="active" href=@{SobreExibirR}>Sobre
-  <a class="active" href=@{ExibirUsuarioR}>Exibir Usuarios  
   $maybe _ <- sess
       <a class="active" id="rightElem"  href=@{LogoutR}>Sair 
       $maybe _ <- mUserId
+          <a class="active" href=@{ExibirUsuarioR}>Usuario
       $nothing  
+          <a class="active" href=@{ExibirUsuarioR}>Usuarios
+          <a class="active" href=@{CadastroR}>Cadastrar dicas
           <a class="active" href=@{SobreR}>Alterar Sobre
           <a class="active" href=@{CategoriaR}>Cadastrar Categoria
-          <a class="active" href=@{ExibirCategoriaR}>Exibir Categoria      
+          <a class="active" href=@{ExibirCategoriaR}>Exibir Categoria   
+          <a class="active" href=@{ListaArtigoR}>Lista de Artigos            
   $nothing      
       <a class="active" id="rightElem" href=@{LoginR}>Login
-      <a class="active"  id="rightElem" href=@{UsuarioR}>Cadastra-se      
+      <a class="active"  id="rightElem" href=@{UsuarioR}>Cadastra-se
+  <a class="active" id="rightElem" href=@{SobreExibirR}>Sobre

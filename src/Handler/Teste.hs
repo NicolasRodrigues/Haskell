@@ -134,12 +134,7 @@ postArtigoR = do
                 |]
                 redirect HomeR         
                 
--- deletar a categoria de acordo com o categoriaId recebido
-deleteApagarArtigoR :: ArtigoId -> Handler TypedContent
-deleteApagarArtigoR artigoid = do  
-    _ <- runDB $ get404 artigoid
-    runDB $ delete artigoid
-    sendStatusJSON noContent204 (object [])
+
                     
 -- para trazer todos as categorias .
 getListArtigosR :: Handler TypedContent 

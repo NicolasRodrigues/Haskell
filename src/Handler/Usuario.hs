@@ -14,9 +14,60 @@ import Control.Monad.Zip
 import Yesod.Form
 import Handler.Formulario
 
--- type Form a = Html -> MForm Handler (FormResult a, Widget) 
---Html -> MForm Handler (FormResult a, Widget)
--- Html -> MForm Handler (FormResult (Usuario, Text), Widget)
+getExibirUsuarioR :: Handler Html
+getExibirUsuarioR = do 
+    sess <- lookupSession "_USR"
+ 
+    usu <- runDB $ selectList [][ Asc UsuarioId]
+    defaultLayout $ do 
+        addStylesheet $ (StaticR css_bootstrap_css)        
+        $(whamletFile "templates/exibirusuario.hamlet")
+        toWidget $(luciusFile "templates/menu.lucius")
+        toWidget $(luciusFile "templates/footer.lucius")   
+
+getAlterarSenhaR :: UsuarioId -> Handler Html
+getAlterarSenhaR aid = do 
+    (widget, enctype) <- generateFormPost formSenha
+    msg <- getMessage
+    defaultLayout $ do
+        addStylesheet $ StaticR css_bootstrap_css
+        $(whamletFile "templates/alterarsenha.hamlet")
+        toWidget $(luciusFile "templates/menu.lucius")
+        toWidget $(luciusFile "templates/footer.lucius")
+
+postAlterarSenhaR ::UsuarioId -> Handler Html
+postAlterarSenhaR aid = do 
+    [Entity iid info] <- runDB $ selectList [UsuarioId ==. aid][]
+    ((res,_),_) <- runFormPost formSenha
+    case res of
+        FormSuccess (s1,s2,s3) -> do
+            if (usuarioSenha info) == s1 then do
+                if s2 == s3 then do
+                    runDB $ update iid [UsuarioSenha =. s2] 
+                    setMessage [shamlet|
+                        <div class="alert alert-danger">
+                             Senha Alterada.
+                    |]
+                    redirect UsuarioR
+                else do 
+                    setMessage [shamlet|
+                        <div class="alert alert-danger">
+                             Nova senha não confere! Digite novamente.
+                    |]
+                    redirect UsuarioR
+            else do
+                setMessage [shamlet|
+                    <div class="alert alert-danger">
+                         Senha invalida! Digite novamente.
+                |]
+                redirect UsuarioR            
+
+formSenha :: Form (Text, Text, Text)
+formSenha = renderBootstrap $  pure (,,)
+    <*> areq passwordField "Password Anterior: " Nothing
+    <*> areq passwordField "Password Novo: " Nothing
+    <*> areq passwordField "Password Confirmation: " Nothing
+
 formUsuario :: Form (Usuario, Text)
 formUsuario = renderBootstrap $  pure (,)
     <*> (Usuario 
@@ -64,3 +115,8 @@ getUsuarioR = do
         toWidget $(luciusFile "templates/menu.lucius")
         toWidget $(luciusFile "templates/footer.lucius")
         
+-- deletar a categoria de acordo com o categoriaId recebido
+getApagarUsuarioR :: UsuarioId ->  Handler Html
+getApagarUsuarioR aid = do  
+    runDB $ deleteCascade  aid
+    redirect HomeR            

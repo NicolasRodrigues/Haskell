@@ -5,33 +5,21 @@
 
 /             HomeR         GET
 
--- testando usuario
-/teste        ListUsuarioR    GET
-/teste2       InsereUsuarioR  POST
-/teste4/#UsuarioId/apagar  ApagarR DELETE
-/teste5/#UsuarioId/alterar         AlterarR  PUT
 
-
-/usuario                   UsuarioR  GET POST
-/artigo                   ArtigoR  GET POST
-/artigo/lista             ListArtigosR GET
+/artigo                   ArtigoR       GET POST
+/artigo/lista             ListArtigosR  GET
 /artigo/apagar/#ArtigoId  ApagarArtigoR DELETE
 
 /cadastro     CadastroR     GET POST
 /dicas        DicasR        GET
 
-/sobre/exibir      SobreExibirR   GET 
-/sobre             SobreR        GET 
-!/sobre/editar     SobreER       POST
 
--- /aluno/listagem    ListaAlunoR GET
 
 -- rota para exibir um artigo pelo id
 
-/alterarArtigo/#ArtigoId       AlterarArtigoR GET
-!/artigo/editar/#ArtigoId     EditarR    POST
-
-/showArtigo/#ArtigoId       MostrarArtigoR GET
+/alterarArtigo/#ArtigoId      AlterarArtigoR GET
+!/artigo/editar/#ArtigoId     EditarR        POST
+/showArtigo/#ArtigoId         MostrarArtigoR GET
 
 /login      LoginR               GET POST
 /logout     LogoutR              GET
@@ -42,3 +30,14 @@
 /categoria/cadastrar                CategoriaR         GET POST
 /categoria/apagar/#CategoriaId      ApagarCategoriaR   GET 
 /categoria                          ExibirCategoriaR   GET
+
+
+/usuario                    UsuarioR         GET POST
+/alterarsenha/#UsuarioId    AlterarSenhaR    GET POST
+/exibir/usuario             ExibirUsuarioR   GET
+/deletar/usuario/#UsuarioId ApagarUsuarioR   GET
+
+
+/sobre/exibir      SobreExibirR   GET 
+/sobre             SobreR        GET 
+!/sobre/editar     SobreER       POST

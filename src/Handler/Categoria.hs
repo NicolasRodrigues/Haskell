@@ -17,7 +17,7 @@ import Yesod.Form
 getApagarCategoriaR :: CategoriaId ->  Handler Html
 getApagarCategoriaR caid = do  
     runDB $ deleteCascade  caid
-    redirect HomeR    
+    redirect ExibirCategoriaR    
 
 
 widgetFooter :: Widget

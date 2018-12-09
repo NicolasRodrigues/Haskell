@@ -1,0 +1,33 @@
+^{widgetMenu}
+
+<h1> Exibir Dados do Usuario
+<h1>#{show sess}
+
+<div class="exibir">
+    <table class="table">
+               <thead>
+                    <tr>
+                        <th>
+                            Nome 
+                        <th>
+                            E-mail                             
+                        <th>
+                            Alterar Senha
+                        <th>
+                            Deletar
+                <tbody>
+                    $forall (Entity iid info) <- usu
+                        <tr>
+                            <td>
+                                #{usuarioNome info}
+                            <td>
+                                #{usuarioEmail info}                                
+                            <td>
+                                <form action=@{AlterarSenhaR iid} method=get>
+                                    <input type="submit" value="Alterar">
+                            <td>
+                                <form action=@{ApagarUsuarioR iid} method=get>
+                                    <input type="submit" value="Deletar">
+
+ ^{widgetFooter}
+

@@ -1,0 +1,11 @@
+^{widgetMenu}
+
+<h1> Alterar Senha
+
+<div class="editar">
+    <form action=@{AlterarSenhaR aid} method="POST" enctype=#{enctype}>
+        <div class="form">
+            ^{widget}
+            <input type="submit" value="Alterar">
+
+^{widgetFooter}

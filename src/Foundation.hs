@@ -31,7 +31,10 @@ instance Yesod App where
     isAuthorized LoginR _ = return Authorized
     isAuthorized SobreExibirR _ = return Authorized  
     isAuthorized SobreR _ = ehAdmin 
-    isAuthorized (ApagarR _) _ = ehAdmin
+    isAuthorized CategoriaR _ = ehAdmin 
+    isAuthorized ExibirCategoriaR _ = ehAdmin     
+    isAuthorized (ApagarCategoriaR _) _ = ehAdmin
+    isAuthorized (AlterarCategoriaR _) _ = ehAdmin    
     isAuthorized _ _ = ehUsuario
     
 
@@ -57,5 +60,5 @@ ehAdmin = do
     logado <- lookupSession "_USR"
     case logado of 
         Just "admin" -> return Authorized
-        Just _ -> return $ Unauthorized "Voc não é adminîstrador!"
+        Just _ -> return $ Unauthorized "Você não é adminîstrador!"
         Nothing -> return AuthenticationRequired

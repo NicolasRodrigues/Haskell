@@ -1,9 +1,14 @@
 ^{widgetMenu}
+
 $maybe mensa <- msg
         #{mensa}
 
-<div class="container">
-
-        <form action=@{UsuarioR} method=post class="form form-row" enctype=#{enctype}>
-            ^{widgetUsu}
-            <button class="btn btn-primary" type="submit">Cadastrar
+<h1> Digite as informações abaixo para se cadastrar no sistema
+<div class="cadastro">
+    <div class="inside">
+         <div class="container">
+                <form action=@{UsuarioR} method=post class="form form-row" enctype=#{enctype}>
+                    ^{widgetUsu}
+                    <button class="btn btn-primary" type="submit">Cadastrar
+                    
+    

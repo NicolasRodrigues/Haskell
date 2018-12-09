@@ -1,6 +1,10 @@
 ^{widgetMenu}
 
+<<<<<<< HEAD
+<h1> Realizar login no nosso sistema
+=======
 <h1 style="text-align:center">Login
+>>>>>>> 58bc043c9e7d375521f5a72504becbf4169c2ca9
 
 $maybe mensa <- msg
     <div class="alert alert-danger">

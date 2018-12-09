@@ -9,7 +9,7 @@
      <table>
       <tr>
        <td>^{widget}
-       <td style="vertical-align:bottom; padding-left:50px"><button type="submit" value="Pesquisar" class="btn btn-primary"> <span class="glyphicon glyphicon-search">
+       <td style="vertical-align:bottom; padding-left:50px"><input type="submit" value="Pesquisar"> <span class="glyphicon glyphicon-search">
 
   <div class="row">
      $forall (Entity idArtigo artes, y) <- x  

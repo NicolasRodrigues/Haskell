@@ -8,11 +8,12 @@
 
 slider{
      display: block;
-     width: 100%;
-     height: 100%;
+     width: 80%;
+     height: 80%;
      background-color: #ddd;
      overflow: hidden;
      position: absolute;
+     margin-left: 120px;
 }
 
 slider > *{

@@ -8,4 +8,4 @@
       <a class="active" id="rightElem"  href=@{LogoutR}>Sair            
   $nothing      
       <a class="active" id="rightElem" href=@{LoginR}>Login
-  <a class="active"  id="rightElem" href=@{UsuarioR}>Cadastrar Usuario
+  <a class="active"  id="rightElem" href=@{UsuarioR}>Cadastra-se

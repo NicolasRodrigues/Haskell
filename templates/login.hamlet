@@ -1,6 +1,6 @@
 ^{widgetMenu}
 
-<h1> Logar no nosso sistema
+<h1> Realizar login no nosso sistema
 
 $maybe mensa <- msg
     <div class="alert alert-danger">

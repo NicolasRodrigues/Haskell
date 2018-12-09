@@ -49,6 +49,7 @@ postUsuarioR = do
 widgetFooter :: Widget
 widgetFooter = $(whamletFile "templates/footer.hamlet")
 
+
 widgetMenu :: Widget
 widgetMenu = do
     sess <- lookupSession "_USR"
@@ -63,4 +64,4 @@ getUsuarioR = do
         $(whamletFile "templates/usuario.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")
         toWidget $(luciusFile "templates/footer.lucius")
-        
+        toWidget $(luciusFile "templates/usuario.lucius")

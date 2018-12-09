@@ -25,10 +25,9 @@ widgetFooter = $(whamletFile "templates/footer.hamlet")
 getHomeR :: Handler Html
 getHomeR = do 
     sess <- lookupSession "_USR"
-    nomeDica <- runDB $ selectList [] [Asc ArtigoNome]
-    --ftQt <- runDB $ selectList [] [Asc ArtigoId]
+    nomeDica <- runDB $ selectList [] [Asc ArtigoId]
     foto <- mapM (\(Entity artigoid _) -> runDB $ selectFirst [PassosArtigoid ==. artigoid] []) nomeDica
-    let x = zip nomeDica foto    
+    let x = zip nomeDica foto  
     putStrLn $ pack $ "============================================"
     putStrLn $ (pack.show) $ length x
     putStrLn $ pack $ "============================================"

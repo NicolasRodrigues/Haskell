@@ -48,7 +48,7 @@ getListaArtigoR = do
         addStylesheet $ (StaticR css_bootstrap_css)        
         $(whamletFile "templates/listaartigo.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")
-        toWidget $(luciusFile "templates/footer.lucius")           
+        toWidget $(luciusFile "templates/footer.lucius")     
         
 getApagarArtigoR :: ArtigoId ->  Handler Html
 getApagarArtigoR aid = do  

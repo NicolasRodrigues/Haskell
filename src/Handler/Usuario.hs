@@ -13,17 +13,33 @@ import Database.Persist.Sql
 import Control.Monad.Zip
 import Yesod.Form
 import Handler.Formulario
+import Text.Read
 
 getExibirUsuarioR :: Handler Html
 getExibirUsuarioR = do 
-    sess <- lookupSession "_USR"
- 
-    usu <- runDB $ selectList [][ Asc UsuarioId]
-    defaultLayout $ do 
-        addStylesheet $ (StaticR css_bootstrap_css)        
-        $(whamletFile "templates/exibirusuario.hamlet")
-        toWidget $(luciusFile "templates/menu.lucius")
-        toWidget $(luciusFile "templates/footer.lucius")   
+    mUserId <- lookupSession "_ID"
+    case mUserId of       
+        Just idUsuarioText -> do
+            --usu <- runDB $ get404 (deIdTextParaUsuarioKey idUsuarioText)
+                --maybeUsuario <- runDB $ get (deIdTextParaUsuarioKey idUsuarioText)
+            usu <- runDB $ selectList [UsuarioId ==. (deIdTextParaUsuarioKey idUsuarioText)][ Asc UsuarioId]
+            defaultLayout $ do 
+                addStylesheet $ (StaticR css_bootstrap_css)        
+                $(whamletFile "templates/exibirusuario.hamlet")
+                toWidget $(luciusFile "templates/menu.lucius")
+                toWidget $(luciusFile "templates/footer.lucius")   
+        Nothing -> do
+            usu <- runDB $ selectList [][ Asc UsuarioId]
+            defaultLayout $ do 
+                addStylesheet $ (StaticR css_bootstrap_css)        
+                $(whamletFile "templates/exibirusuario.hamlet")
+                toWidget $(luciusFile "templates/menu.lucius")
+                toWidget $(luciusFile "templates/footer.lucius")   
+
+-- Gambiarra parcial para utilizar toda vez que precisar converter o ID tipo Text para Key Usuário de uma sessão
+deIdTextParaUsuarioKey :: Text -> Key Usuario    
+deIdTextParaUsuarioKey idUsuarioText = toSqlKey $ (read (unpack idUsuarioText) :: Int64 ) :: Key Usuario
+
 
 getAlterarSenhaR :: UsuarioId -> Handler Html
 getAlterarSenhaR aid = do 
@@ -48,19 +64,19 @@ postAlterarSenhaR aid = do
                         <div class="alert alert-danger">
                              Senha Alterada.
                     |]
-                    redirect UsuarioR
+                    redirect $ AlterarSenhaR aid
                 else do 
                     setMessage [shamlet|
                         <div class="alert alert-danger">
                              Nova senha não confere! Digite novamente.
                     |]
-                    redirect UsuarioR
+                    redirect $ AlterarSenhaR aid
             else do
                 setMessage [shamlet|
                     <div class="alert alert-danger">
                          Senha invalida! Digite novamente.
                 |]
-                redirect UsuarioR            
+                redirect $ AlterarSenhaR aid          
 
 formSenha :: Form (Text, Text, Text)
 formSenha = renderBootstrap $  pure (,,)
@@ -104,6 +120,7 @@ widgetFooter = $(whamletFile "templates/footer.hamlet")
 widgetMenu :: Widget
 widgetMenu = do
     sess <- lookupSession "_USR"
+    mUserId <- lookupSession "_ID"    
     $(whamletFile "templates/menu.hamlet")
 
 getUsuarioR :: Handler Html
@@ -121,4 +138,5 @@ getUsuarioR = do
 getApagarUsuarioR :: UsuarioId ->  Handler Html
 getApagarUsuarioR aid = do  
     runDB $ deleteCascade  aid
+    deleteSession "_USR"
     redirect HomeR            

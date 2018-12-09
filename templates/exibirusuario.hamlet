@@ -1,7 +1,6 @@
 ^{widgetMenu}
 
 <h1> Exibir Dados do Usuario
-<h1>#{show sess}
 
 <div class="exibir">
     <table class="table">

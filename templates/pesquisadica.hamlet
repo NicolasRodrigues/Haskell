@@ -1,0 +1,9 @@
+^{widgetMenu}
+<h1> teste
+
+<div>
+
+  <form action=@{Pesq2R} method=get class="form form-row" enctype=#{enctype}>
+
+
+^{widgetFooter}

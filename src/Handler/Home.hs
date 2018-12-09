@@ -16,6 +16,7 @@ import Database.Persist.Sql
 widgetMenu :: Widget
 widgetMenu = do
     sess <- lookupSession "_USR"
+    mUserId <- lookupSession "_ID"    
     $(whamletFile "templates/menu.hamlet")
 
 widgetFooter :: Widget

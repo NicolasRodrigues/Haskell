@@ -18,6 +18,7 @@ widgetFooter = $(whamletFile "templates/footer.hamlet")
 widgetMenu :: Widget
 widgetMenu = do
     sess <- lookupSession "_USR"
+    mUserId <- lookupSession "_ID"    
     $(whamletFile "templates/menu.hamlet")
 
 

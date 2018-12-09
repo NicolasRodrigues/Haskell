@@ -7,5 +7,7 @@
         <div class="form">
             ^{widget}
             <input type="submit" value="Alterar">
+$maybe mensa <- msg
+        #{mensa}
 
 ^{widgetFooter}

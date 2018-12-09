@@ -18,6 +18,7 @@ widgetFooter = $(whamletFile "templates/footer.hamlet")
 widgetMenu :: Widget
 widgetMenu = do
     sess <- lookupSession "_USR"
+    mUserId <- lookupSession "_ID"    
     $(whamletFile "templates/menu.hamlet")
 
 
@@ -44,14 +45,17 @@ postLoginR = do
     case res of 
         FormSuccess ("admin@admin.com","admin") -> do
             setSession "_USR" "admin"
+            deleteSession "_ID" 
            -- redirect AdminR
             redirect HomeR
+        
         FormSuccess (email,senha) -> do 
             usr <- runDB $ selectFirst [UsuarioEmail ==. email
                                        ,UsuarioSenha ==. senha] []
             case usr of 
                 Just (Entity usrid usuario) -> do 
                     setSession "_USR" (pack (show usuario))
+                    setSession "_ID" (pack $ show $ fromSqlKey usrid)
                     redirect HomeR
                 Nothing -> do 
                     setMessage [shamlet|

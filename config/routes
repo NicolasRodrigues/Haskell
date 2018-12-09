@@ -12,6 +12,7 @@
 
 /cadastro     CadastroR     GET POST
 /dicas        DicasR        GET
+/pesquisa     Pesq2R        GET
 
 
 

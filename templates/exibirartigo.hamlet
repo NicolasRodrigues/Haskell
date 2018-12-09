@@ -3,7 +3,7 @@
 <h1> Exibir Artigo
 
 <div class="exibir">
-        <table class=table>
+        <table class="table">
             <thead>
                 <tr>
                     <th>
@@ -15,7 +15,7 @@
                 <tr>
                     <th>
                         Data do artigo: #{show $ artigoDataInc artigo}
-
+            <tbody>
                 <tr>
                     <th>
                         <img src="/static/fotos/#{fromSqlKey $ passoid1}">                    

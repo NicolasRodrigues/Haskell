@@ -1,0 +1,21 @@
+table{
+    
+    border-collapse:collapse;
+    border-spacing:0;
+    border-padding: 5px;
+    
+}
+
+.exibir{
+    margin: 0 auto;
+    width: 48%;
+    height: 75%;
+    margin: 0 auto;
+    background-color: baby-green;
+    margin-bottom: 0.2em;
+    color: #666;    
+    display: block;
+    border: 1px solid gray;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px 10px #ddd;
+}

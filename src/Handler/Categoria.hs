@@ -62,7 +62,7 @@ getExibirCategoriaR = do
         addStylesheet $ (StaticR css_bootstrap_css)        
         $(whamletFile "templates/exibircategoria.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")
-        toWidget $(luciusFile "templates/footer.lucius")            
+        toWidget $(luciusFile "templates/footer.lucius")        
         
         
 formCategoria1 :: Form Categoria
@@ -78,7 +78,8 @@ getCategoriaR = do
         addStylesheet $ (StaticR css_bootstrap_css)        
         $(whamletFile "templates/categoria.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")
-        toWidget $(luciusFile "templates/footer.lucius")  
+        toWidget $(luciusFile "templates/footer.lucius")
+        
         
 postCategoriaR :: Handler Html
 postCategoriaR = do 

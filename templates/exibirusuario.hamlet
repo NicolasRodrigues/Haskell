@@ -3,7 +3,7 @@
 <h1> Exibir Dados do Usuario
 
 <div class="exibir">
-    <table class="table">
+    <table class="table table-striped table-bordered">
                <thead>
                     <tr>
                         <th>
@@ -23,10 +23,10 @@
                                 #{usuarioEmail info}                                
                             <td>
                                 <form action=@{AlterarSenhaR iid} method=get>
-                                    <input type="submit" value="Alterar">
+                                    <input type="submit" value="Alterar" class="btn btn-info">
                             <td>
                                 <form action=@{ApagarUsuarioR iid} method=get>
-                                    <input type="submit" value="Deletar">
+                                    <input type="submit" value="Deletar" class="btn btn-info">
 
  ^{widgetFooter}
 

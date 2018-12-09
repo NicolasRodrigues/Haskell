@@ -27,14 +27,14 @@ getExibirUsuarioR = do
                 addStylesheet $ (StaticR css_bootstrap_css)        
                 $(whamletFile "templates/exibirusuario.hamlet")
                 toWidget $(luciusFile "templates/menu.lucius")
-                toWidget $(luciusFile "templates/footer.lucius")   
+                toWidget $(luciusFile "templates/footer.lucius")     
         Nothing -> do
             usu <- runDB $ selectList [][ Asc UsuarioId]
             defaultLayout $ do 
                 addStylesheet $ (StaticR css_bootstrap_css)        
                 $(whamletFile "templates/exibirusuario.hamlet")
                 toWidget $(luciusFile "templates/menu.lucius")
-                toWidget $(luciusFile "templates/footer.lucius")   
+                toWidget $(luciusFile "templates/footer.lucius")  
 
 -- Gambiarra parcial para utilizar toda vez que precisar converter o ID tipo Text para Key Usuário de uma sessão
 deIdTextParaUsuarioKey :: Text -> Key Usuario    

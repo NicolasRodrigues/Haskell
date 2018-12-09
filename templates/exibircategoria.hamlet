@@ -1,0 +1,28 @@
+^{widgetMenu}
+
+<h1> Exibir Categoria
+
+<div class="exibir">
+    <table class="table">
+               <thead>
+                    <tr>
+                        <th>
+                            Nome do Categoria: 
+                        <th>
+                            Alterar Categoria
+                        <th>
+                            Excluir Categoria
+                <tbody>
+                    $forall (Entity iid info) <- cat
+                        <tr>
+                            <td>
+                                #{categoriaNome info}
+                            <td>
+                                <form action=@{AlterarCategoriaR iid} method=get>
+                                    <input type="submit" value="Alterar">
+                            <td>
+                                <form action=@{ApagarCategoriaR iid} method=get>
+                                    <input type="submit" value="Deletar">
+
+ ^{widgetFooter}
+

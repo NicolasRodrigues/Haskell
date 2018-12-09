@@ -23,6 +23,7 @@ widgetMenu = do
 
 getSobreR :: Handler Html
 getSobreR = do 
+    sess <- lookupSession "_USR"
     [Entity iid info] <- runDB $ selectList [][Asc SobreId]
     ((res,widget), enctype) <- runFormPost $ formSobre (sobreComoSomos info) (sobreComoFunciona info)
                                          (sobreComoPossoAjudar info) (sobreComoContribuir info)

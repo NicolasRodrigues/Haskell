@@ -1,3 +1,4 @@
+^{widgetMenu}
 $maybe mensa <- msg
     <div class="alert alert-danger">
         #{mensa}
@@ -6,3 +7,5 @@ $maybe mensa <- msg
     <form action=@{CategoriaR} method=post enctype=#{enctype}>
         ^{widgetUsu}
         <input type="submit" value="Cadastrar">
+
+        ^{widgetFooter}        

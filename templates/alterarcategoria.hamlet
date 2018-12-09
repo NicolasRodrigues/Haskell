@@ -1,12 +1,11 @@
 ^{widgetMenu}
 
-<h1> Alterar Artigo
+<h1> Alterar Categoria
 
 <div class="editar">
-    <form action=@{EditarR aid} method="POST" enctype=#{enctype}>
+    <form action=@{AlterarCategoria2R aid} method="POST" enctype=#{enctype}>
         <div class="form">
             ^{widget}
             <input type="submit" value="Alterar">
 
         ^{widgetFooter}
-

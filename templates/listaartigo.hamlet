@@ -3,7 +3,7 @@
 <h1> Exibir Lista de Artigos
 
 <div class="exibir">
-    <table class="table">
+    <table class="table table-striped table-bordered">
                <thead>
                     <tr>
                         <th>
@@ -19,9 +19,9 @@
                                 #{artigoNome info}
                             <td>
                                 <form action=@{AlterarArtigoR iid} method=get>
-                                    <input type="submit" value="Alterar">
+                                    <input type="submit" value="Alterar" class="btn btn-info">
                             <td>
                                 <form action=@{ApagarArtigoR iid} method=get>
-                                    <input type="submit" value="Deletar">
+                                    <input type="submit" value="Deletar" class="btn btn-info">
 
  ^{widgetFooter}

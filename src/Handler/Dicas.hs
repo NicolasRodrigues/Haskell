@@ -29,27 +29,17 @@ getDicasR = do
     foto <- mapM (\(Entity artigoid _) -> runDB $ selectFirst [PassosArtigoid ==. artigoid] []) nomeDica
     let x = zip nomeDica foto
     defaultLayout $ do
+        addStylesheet $ (StaticR css_bootstrap_css)      
         $(whamletFile "templates/dicas.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")
         toWidget $(luciusFile "templates/footer.lucius")
+        toWidget $(luciusFile "templates/dicas.lucius")
 
 formDicas :: Form (Maybe (CategoriaId), Maybe (Text))
 formDicas = renderBootstrap $  pure (,)        
     <*> aopt  (selectField $ optionsPersistKey [] [] categoriaNome) "Categoria:" Nothing   
     <*> aopt  textField "Nome:" Nothing    
     
- {-
-getPesqR :: Text -> Handler Html
-getPesqR name= do 
-    nomeDica <- runDB $ selectList [ArtigoNome ==. name][ Asc ArtigoNome]
-    foto <- mapM (\(Entity artigoid _) -> runDB $ selectFirst [PassosArtigoid ==. artigoid] []) nomeDica
-    let x = zip nomeDica foto
-    defaultLayout $ do
-         $(whamletFile "templates/dicas.hamlet")
-         toWidget $(luciusFile "templates/menu.lucius")
-         toWidget $(luciusFile "templates/footer.lucius")-}
-         
-         
          
 getListaArtigoR :: Handler Html
 getListaArtigoR = do 
@@ -103,4 +93,6 @@ getBuscarArtigoR art = do
     defaultLayout $ do
          $(whamletFile "templates/dicas.hamlet")
          toWidget $(luciusFile "templates/menu.lucius")
-         toWidget $(luciusFile "templates/footer.lucius")                              
+         toWidget $(luciusFile "templates/footer.lucius") 
+         toWidget $(luciusFile "templates/dicas.lucius")
+         addStylesheet $ (StaticR css_bootstrap_css)         

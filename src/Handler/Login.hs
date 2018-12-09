@@ -20,6 +20,7 @@ widgetMenu = do
     sess <- lookupSession "_USR"
     mUserId <- lookupSession "_ID"    
     $(whamletFile "templates/menu.hamlet")
+    toWidget $(luciusFile "templates/menu.lucius")
 
 
 formLogin :: Form (Text, Text)
@@ -34,9 +35,7 @@ getLoginR = do
     defaultLayout $ do 
         addStylesheet $ StaticR css_bootstrap_css
         $(whamletFile "templates/login.hamlet")
-        toWidget $(luciusFile "templates/menu.lucius")
         toWidget $(luciusFile "templates/footer.lucius")
-        toWidget $(luciusFile "templates/cadastro.lucius")
         toWidget $(luciusFile "templates/login.lucius")
 
 postLoginR :: Handler Html

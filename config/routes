@@ -6,37 +6,24 @@
 /             HomeR         GET
 
 
-/artigo                   ArtigoR       GET POST
-<<<<<<< HEAD
-=======
-/artigo/lista                 ListArtigosR   GET 
-/artigo/lista2                ListaArtigoR   GET
-/artigo/apagar/#ArtigoId  ApagarArtigoR DELETE
->>>>>>> 0bb818258a7d8509c4c0d356250b3ad3e4953a77
-
 /cadastro     CadastroR     GET POST
 /dicas        DicasR        GET
 /buscar        PesqArtigoR        POST
-<<<<<<< HEAD
-!/buscartigo/#Text      BuscarArtigoR   GET
-=======
->>>>>>> 0bb818258a7d8509c4c0d356250b3ad3e4953a77
+
 
 
 
 -- rota para exibir um artigo pelo id
 
+/artigo                       ArtigoR        GET POST
 /alterarArtigo/#ArtigoId      AlterarArtigoR GET
 !/artigo/editar/#ArtigoId     EditarR        POST
 !/showArtigo/#ArtigoId        MostrarArtigoR GET
-<<<<<<< HEAD
 /artigo/lista                 ListArtigosR   GET 
 /artigo/lista2                ListaArtigoR   GET 
-/artigo/apagar/#ArtigoId      ApagarArtigoR GET
-=======
-!/buscartigo/#Text      BuscarArtigoR   GET
+/artigo/apagar/#ArtigoId      ApagarArtigoR  GET
+!/buscartigo/#Text            BuscarArtigoR  GET
 
->>>>>>> 0bb818258a7d8509c4c0d356250b3ad3e4953a77
 
 /login      LoginR               GET POST
 /logout     LogoutR              GET

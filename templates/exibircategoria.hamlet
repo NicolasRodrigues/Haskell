@@ -3,7 +3,7 @@
 <h1> Exibir Categoria
 
 <div class="exibir">
-    <table class="table">
+    <table class="table table-striped table-bordered">
                <thead>
                     <tr>
                         <th>
@@ -19,10 +19,10 @@
                                 #{categoriaNome info}
                             <td>
                                 <form action=@{AlterarCategoriaR iid} method=get>
-                                    <input type="submit" value="Alterar">
+                                    <input type="submit" value="Alterar" class="btn btn-info">
                             <td>
                                 <form action=@{ApagarCategoriaR iid} method=get>
-                                    <input type="submit" value="Deletar">
+                                    <input type="submit" value="Deletar" class="btn btn-info">
 
  ^{widgetFooter}
 

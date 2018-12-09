@@ -61,7 +61,8 @@ getAlterarArtigoR aid = do
             $(whamletFile "templates/alterarartigo.hamlet")
             toWidget $(luciusFile "templates/menu.lucius")
             toWidget $(luciusFile "templates/footer.lucius")
-            toWidget $(luciusFile "templates/alterarartigo.lucius")            
+            toWidget $(luciusFile "templates/alterarartigo.lucius")  
+            addStylesheet $ (StaticR css_bootstrap_css)
 
     
 postEditarR :: ArtigoId -> Handler Html
@@ -137,7 +138,8 @@ getMostrarArtigoR aid = do
         $(whamletFile "templates/exibirartigo.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")
         toWidget $(luciusFile "templates/footer.lucius")
-        toWidget $(luciusFile "templates/alterarartigo.lucius")         
+        toWidget $(luciusFile "templates/alterarartigo.lucius")
+        addStylesheet $ (StaticR css_bootstrap_css)
 
 
 getApagarArtigoR :: ArtigoId ->  Handler Html

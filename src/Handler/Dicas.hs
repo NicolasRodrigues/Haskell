@@ -31,6 +31,8 @@ getDicasR = do
         $(whamletFile "templates/dicas.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")
         toWidget $(luciusFile "templates/footer.lucius")
+        toWidget $(luciusFile "templates/dicas.lucius")
+        addStylesheet $ (StaticR css_bootstrap_css)
 
 formDicas :: Form (Maybe (CategoriaId), Maybe (Text))
 formDicas = renderBootstrap $  pure (,)        
@@ -52,6 +54,8 @@ getPesq2R = do
                      $(whamletFile "templates/dicas.hamlet")
                      toWidget $(luciusFile "templates/menu.lucius")
                      toWidget $(luciusFile "templates/footer.lucius")
+                     toWidget $(luciusFile "templates/dicas.lucius")
+                     addStylesheet $ (StaticR css_bootstrap_css)
                 Nothing -> do
                  case cat of 
                      Just catego -> do            
@@ -61,7 +65,9 @@ getPesq2R = do
                       defaultLayout $ do
                           $(whamletFile "templates/dicas.hamlet")
                           toWidget $(luciusFile "templates/menu.lucius")
-                          toWidget $(luciusFile "templates/footer.lucius")      
+                          toWidget $(luciusFile "templates/footer.lucius")   
+                          toWidget $(luciusFile "templates/dicas.lucius")
+                          addStylesheet $ (StaticR css_bootstrap_css)
                      Nothing -> do
                           setMessage [shamlet|
                               <div class="alert alert-danger">

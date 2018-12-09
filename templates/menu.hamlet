@@ -6,6 +6,7 @@
   <a class="active" href=@{SobreR}>Alterar Sobre
   <a class="active" href=@{CategoriaR}>Cadastrar Categoria  
   <a class="active" href=@{ExibirCategoriaR}>Exibir Categoria
+  <a class="active" href=@{ExibirUsuarioR}>Exibir Usuarios  
   $maybe _ <- sess
       <a class="active" id="rightElem"  href=@{LogoutR}>Sair 
   $nothing      

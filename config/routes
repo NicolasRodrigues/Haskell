@@ -11,14 +11,8 @@
 /teste4/#UsuarioId/apagar  ApagarR DELETE
 /teste5/#UsuarioId/alterar         AlterarR  PUT
 
--- testando categoria
-/categoria/teste        ListCategoriaR    GET
-/categoria/teste2       InsereCategoriaR  POST
-/categoria/teste4/#CategoriaId/apagar  ApagarCategoriaR DELETE
-/categoria/teste5/#CategoriaId/alterar         AlterarCategoriaR  PUT
 
 /usuario                   UsuarioR  GET POST
-/categoria                   CategoriaR  GET POST
 /artigo                   ArtigoR  GET POST
 /artigo/lista             ListArtigosR GET
 /artigo/apagar/#ArtigoId  ApagarArtigoR DELETE
@@ -35,10 +29,16 @@
 -- rota para exibir um artigo pelo id
 
 /alterarArtigo/#ArtigoId       AlterarArtigoR GET
-
 !/artigo/editar/#ArtigoId     EditarR    POST
 
 /showArtigo/#ArtigoId       MostrarArtigoR GET
 
 /login      LoginR               GET POST
 /logout     LogoutR              GET
+
+
+/alterar/categoria/#CategoriaId     AlterarCategoriaR  GET
+!/alterar/categoria/#CategoriaId    AlterarCategoria2R POST
+/categoria/cadastrar                CategoriaR         GET POST
+/categoria/apagar/#CategoriaId      ApagarCategoriaR   GET 
+/categoria                          ExibirCategoriaR   GET

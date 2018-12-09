@@ -65,27 +65,7 @@ putAlterarR usuarioid = do
 -- update
 -- curl -X PUT https://projhaskell-danfatec13.c9users.io/categoria/teste5/1/alterar  -d '{"nome":"Haskell"}'	
 
-	
--- para trazer todos as categorias .
-getListCategoriaR :: Handler TypedContent
-getListCategoriaR = do 
-    categorias <- runDB $ selectList [] [Asc CategoriaNome]
-    sendStatusJSON ok200 (object ["resp" .= categorias])
-    
--- para inserir nova categoria.
-postInsereCategoriaR :: Handler TypedContent
-postInsereCategoriaR = do
-    categoria <- requireJsonBody :: Handler Categoria
-    categoriaid <- runDB $ insert categoria
-    sendStatusJSON created201 (object ["resp" .= categoriaid])
-    
--- deletar a categoria de acordo com o categoriaId recebido
-deleteApagarCategoriaR :: CategoriaId -> Handler TypedContent
-deleteApagarCategoriaR categoriaid = do  
-    _ <- runDB $ get404 categoriaid
-    runDB $ delete categoriaid
-    sendStatusJSON noContent204 (object [])
-    
+
 
 -- update from categoria 
 -- set (todos os campos)
@@ -98,31 +78,10 @@ putAlterarCategoriaR categoriaid = do
     sendStatusJSON noContent204 (object [])
     
 
-formCategoria :: Form Categoria
-formCategoria = renderBootstrap $   (Categoria 
-        <$> areq textField "Nome: " Nothing
-    )
+
     
 
-postCategoriaR :: Handler Html
-postCategoriaR = do 
-    ((res,_),_) <- runFormPost formCategoria
-    case res of
-        FormSuccess (cat) -> do 
-                runDB $ insert cat 
-                setMessage [shamlet|
-                    <h1>
-                        Categoria cadastrado!
-                |]
-                redirect HomeR
 
-getCategoriaR :: Handler Html
-getCategoriaR = do 
-    (widgetUsu, enctype) <- generateFormPost formCategoria
-    msg <- getMessage
-    defaultLayout $ do 
-        addStylesheet $ StaticR css_bootstrap_css
-        $(whamletFile "templates/categoria.hamlet")
         
 
 

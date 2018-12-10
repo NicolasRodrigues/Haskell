@@ -14,6 +14,7 @@ import Control.Monad.Zip
 import Yesod.Form
 import Handler.Formulario
 import Text.Read
+import Yesod.Form.Bootstrap3(bfs)
 
 getExibirUsuarioR :: Handler Html
 getExibirUsuarioR = do 
@@ -87,11 +88,11 @@ formSenha = renderBootstrap $  pure (,,)
 formUsuario :: Form (Usuario, Text)
 formUsuario = renderBootstrap $  pure (,)
     <*> (Usuario 
-        <$> areq textField "Nome: " Nothing
-        <*> areq emailField "E-mail: " Nothing 
-        <*> areq passwordField "Password: " Nothing
+        <$> areq textField (bfs ("Nome: " :: Text)) Nothing
+        <*> areq emailField (bfs ("E-mail: " :: Text)) Nothing 
+        <*> areq passwordField (bfs ("Password: " :: Text)) Nothing
     )
-    <*> areq passwordField "Password Confirmation: " Nothing
+    <*> areq passwordField (bfs ("Password Confirmation: " :: Text)) Nothing
                         
 
 postUsuarioR :: Handler Html

@@ -161,7 +161,7 @@ getCurtirR aid = do
         setMessage $ [shamlet| Obrigado pela Curtida!!!|] 
         
         
-
+{-
 getNaoCurtirR :: ArtigoId -> Handler Html
 getNaoCurtirR aid = do
     _ <- runDB $ update aid [ArtigoQtNaoCurtidas +=. 1]
@@ -178,3 +178,4 @@ getNaoCurtirR aid = do
         toWidget $(luciusFile "templates/alterarartigo.lucius")
         toWidget $(luciusFile "templates/exibirartigo.lucius")       
         setMessage $ [shamlet| Obrigado pela sua Opnião!!!|]         
+        -}

@@ -17,58 +17,61 @@
                         Data do artigo: #{show $ artigoDataInc artigo}
             <tbody>
                 <tr>
-                    <th>
+                    <td>
                         <img class="img-fluid" src="/static/fotos/#{fromSqlKey $ passoid1}">                    
                 <tr>
-                    <th>
+                    <td>
                         Titulo Passo: #{passosTitulo p1}
                 <tr>        
-                    <th>
+                    <td>
                         Descrição:  #{passosDesc p1}
                 <tr>
-                    <th>
+                    <td>
                         <img src="https://projhaskell-danfatec13.c9users.io/static/fotos/#{fromSqlKey $ passoid2}">                    
                 <tr>
-                    <th>
+                    <td>
                         Titulo Passo: #{passosTitulo p2}
                 <tr>        
-                    <th>
+                    <td>
                         Descrição:  #{passosDesc p2}       
                 <tr>
-                    <th>
+                    <td>
                         <img src="https://projhaskell-danfatec13.c9users.io/static/fotos/#{fromSqlKey $ passoid3}">                    
                 <tr>
-                    <th>
+                    <td>
                         Titulo Passo: #{passosTitulo p3}
                 <tr>        
-                    <th>
+                    <td>
                         Descrição:  #{passosDesc p3}                           
                 <tr>
-                    <th>
-                        Qt Visualização: #{artigoQtVisualizacao artigo}
+                    <td>
+                       Qt Visualização: #{artigoQtVisualizacao artigo}
                 <tr>
-                    <th>
+                    <td>
                         Qt Curtidas: #{artigoQtCurtidas artigo}
+                <!--
                 <tr>
-                    <th>
+                    <td>
                         Qt Não Curtidas: #{artigoQtNaoCurtidas artigo}
+                        -->
                 <tr>
-                    <th>
+                    <td>
                         Observações: #{infoaddObservacoes info}
                 <tr>
-                    <th>
+                    <td>
                         Aviso: #{infoaddAviso info}
                 <tr>
-                    <th>
+                    <td>
                         Materiais Necessarios: #{infoaddMateriaisNec info}
                 <tr>
-                    <th>
+                    <td>
                         <form action=@{CurtirR aid} method=get>
                             <input type="submit" value="Curtir" class="btn btn-success"> 
 
-                <tr>
-                    <th>
+                <!--<tr>
+                    <td>
                         <form action=@{NaoCurtirR aid} method=get>
-                            <input type="submit" value="Não Curtir" class="btn btn-danger">        
+                            <input type="submit" value="Não Curtir" class="btn btn-danger">
+                -->
     ^{widgetFooter}
 

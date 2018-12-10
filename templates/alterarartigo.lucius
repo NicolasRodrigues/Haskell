@@ -38,19 +38,6 @@ textarea{
     margin: 5px 0;
 }
 
-input[type=submit]{
-    margin: 0 auto;
-    width: 100%;
-    border: none;
-    padding: 10px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    background-color: #4CAF50;
-    margin-left: 25px;
-    text-align: center;
-    color: #000000;
-}
-
 #fstPasso{
     margin-top: 10px;
 }

@@ -23,6 +23,8 @@
 /artigo/lista2                ListaArtigoR   GET 
 /artigo/apagar/#ArtigoId      ApagarArtigoR  GET
 !/buscartigo/#Text            BuscarArtigoR  GET
+!/curtir/#ArtigoId            CurtirR        GET
+!/naocurtir/#ArtigoId         NaoCurtirR     GET
 
 
 /login      LoginR               GET POST

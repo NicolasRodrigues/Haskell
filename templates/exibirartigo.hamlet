@@ -18,7 +18,7 @@
             <tbody>
                 <tr>
                     <th>
-                        <img src="/static/fotos/#{fromSqlKey $ passoid1}">                    
+                        <img class="img-fluid" src="/static/fotos/#{fromSqlKey $ passoid1}">                    
                 <tr>
                     <th>
                         Titulo Passo: #{passosTitulo p1}
@@ -61,6 +61,14 @@
                 <tr>
                     <th>
                         Materiais Necessarios: #{infoaddMateriaisNec info}
+                <tr>
+                    <th>
+                        <form action=@{CurtirR aid} method=get>
+                            <input type="submit" value="Curtir" class="btn btn-success"> 
 
-        ^{widgetFooter}
+                <tr>
+                    <th>
+                        <form action=@{NaoCurtirR aid} method=get>
+                            <input type="submit" value="Não Curtir" class="btn btn-danger">        
+    ^{widgetFooter}
 

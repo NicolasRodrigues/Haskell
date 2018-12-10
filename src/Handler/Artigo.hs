@@ -129,6 +129,7 @@ formEditar a b c d e f g h i j k l m n o p q r s t u = renderDivs $ (,,,,)
 getMostrarArtigoR :: ArtigoId -> Handler Html
 getMostrarArtigoR aid = do
     artigo <- runDB $ get404 aid
+    _ <- runDB $ update aid [ArtigoQtVisualizacao +=. 1]
     [Entity passoid1 p1, Entity passoid2 p2, Entity passoid3 p3] <- runDB $ selectList [PassosArtigoid ==. aid] [Asc PassosId]  
     categoria  <- runDB $ selectFirst [CategoriaId ==. artigoCategoriaid artigo] []
     [Entity iid info] <- runDB $ selectList [InfoaddArtigoid ==. aid][]
@@ -142,3 +143,38 @@ getMostrarArtigoR aid = do
         toWidget $(luciusFile "templates/exibirartigo.lucius")
         addStylesheet $ (StaticR css_bootstrap_css)
 
+getCurtirR :: ArtigoId -> Handler Html
+getCurtirR aid = do
+    _ <- runDB $ update aid [ArtigoQtCurtidas +=. 1]
+    artigo <- runDB $ get404 aid
+    [Entity passoid1 p1, Entity passoid2 p2, Entity passoid3 p3] <- runDB $ selectList [PassosArtigoid ==. aid] [Asc PassosId]  
+    categoria  <- runDB $ selectFirst [CategoriaId ==. artigoCategoriaid artigo] []
+    [Entity iid info] <- runDB $ selectList [InfoaddArtigoid ==. aid][]
+    defaultLayout $ do 
+        setTitle "Artigo"
+        addStylesheet $ (StaticR css_bootstrap_css)
+        $(whamletFile "templates/exibirartigo.hamlet")
+        toWidget $(luciusFile "templates/menu.lucius")
+        toWidget $(luciusFile "templates/footer.lucius")
+        toWidget $(luciusFile "templates/alterarartigo.lucius")
+        toWidget $(luciusFile "templates/exibirartigo.lucius")
+        setMessage $ [shamlet| Obrigado pela Curtida!!!|] 
+        
+        
+
+getNaoCurtirR :: ArtigoId -> Handler Html
+getNaoCurtirR aid = do
+    _ <- runDB $ update aid [ArtigoQtNaoCurtidas +=. 1]
+    artigo <- runDB $ get404 aid
+    [Entity passoid1 p1, Entity passoid2 p2, Entity passoid3 p3] <- runDB $ selectList [PassosArtigoid ==. aid] [Asc PassosId]  
+    categoria  <- runDB $ selectFirst [CategoriaId ==. artigoCategoriaid artigo] []
+    [Entity iid info] <- runDB $ selectList [InfoaddArtigoid ==. aid][]
+    defaultLayout $ do 
+        setTitle "Artigo"
+        addStylesheet $ (StaticR css_bootstrap_css)
+        $(whamletFile "templates/exibirartigo.hamlet")
+        toWidget $(luciusFile "templates/menu.lucius")
+        toWidget $(luciusFile "templates/footer.lucius")
+        toWidget $(luciusFile "templates/alterarartigo.lucius")
+        toWidget $(luciusFile "templates/exibirartigo.lucius")       
+        setMessage $ [shamlet| Obrigado pela sua Opnião!!!|]         

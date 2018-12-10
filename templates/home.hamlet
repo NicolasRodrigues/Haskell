@@ -1,19 +1,13 @@
 ^{widgetMenu}
-<div class="header">
+<div class="header container-fluid">
     <h1> Bem vindo ao Yesódia !
     
     
-    <div class="teste container-fluid">
-        <slider>
-            $forall (Entity idArtigo artes, y) <- x        
-                <slide>
-                     $maybe Entity idPasso _ <- y
-                         <a href=@{MostrarArtigoR idArtigo}><img src="static/fotos/#{fromSqlKey idPasso}">
 
-    <div class="row container-fluid">
+    <div class="row">
         $forall (Entity idArtigo artes, y) <- x  
-            <div class="col-sm-4">
+            <div class="col-sm-4 ajuste">
                 $maybe Entity idPasso _ <- y
-                     <a href=@{MostrarArtigoR idArtigo}><img src="https://haskell-web3-egbulsoni.c9users.io/static/fotos/#{fromSqlKey idPasso}"class="img-thumbnail reduz-tamanho">
+                     <a href=@{MostrarArtigoR idArtigo}><img src="https://haskell-web3-egbulsoni.c9users.io/static/fotos/#{fromSqlKey idPasso}"class="img-thumbnail reduz-tamanho ajuste">
                  
 ^{widgetFooter}

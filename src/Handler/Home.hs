@@ -25,7 +25,7 @@ widgetFooter = $(whamletFile "templates/footer.hamlet")
 getHomeR :: Handler Html
 getHomeR = do 
     sess <- lookupSession "_USR"
-    nomeDica <- runDB $ selectList [] [Asc ArtigoId]
+    nomeDica <- runDB $ selectList [] [Desc ArtigoQtCurtidas, LimitTo 6]
     foto <- mapM (\(Entity artigoid _) -> runDB $ selectFirst [PassosArtigoid ==. artigoid] []) nomeDica
     let x = zip nomeDica foto  
     putStrLn $ pack $ "============================================"
@@ -39,5 +39,4 @@ getHomeR = do
         toWidget $(luciusFile "templates/home.lucius")
         toWidget $(luciusFile "templates/menu.lucius")
         toWidget $(luciusFile "templates/footer.lucius")
-        toWidget $(luciusFile "templates/margem-carrossel.lucius")
         toWidget $(luciusFile "templates/dicas.lucius")

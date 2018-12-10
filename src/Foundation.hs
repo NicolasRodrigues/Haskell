@@ -56,7 +56,9 @@ ehUsuario = do
     logado <- lookupSession "_USR"
     case logado of 
         Just _ -> return Authorized
-        Nothing -> return AuthenticationRequired
+        Nothing -> do 
+            setMessage "É necessário fazer login para ver as dicas"
+            return AuthenticationRequired 
         
 ehAdmin = do 
     logado <- lookupSession "_USR"

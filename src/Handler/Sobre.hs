@@ -11,6 +11,7 @@ import Text.Lucius
 import Text.Julius
 import Data.Maybe (fromJust)
 import Database.Persist.Sql
+import Yesod.Form.Bootstrap3(bfs)
 
 widgetFooter :: Widget
 widgetFooter = $(whamletFile "templates/footer.hamlet")
@@ -35,15 +36,17 @@ getSobreR = do
         _ -> defaultLayout $ do 
             addStylesheet $ (StaticR css_bootstrap_css)        
             $(whamletFile "templates/cadastroempresa.hamlet")
+            toWidget $(luciusFile "templates/usuario.lucius")
             toWidget $(luciusFile "templates/menu.lucius")
             toWidget $(luciusFile "templates/footer.lucius")
+            
         
 formSobre ::  Textarea -> Textarea -> Textarea -> Textarea -> Form Sobre
 formSobre a b c d = renderBootstrap $ (Sobre 
-        <$> areq textareaField "Como Somos:" (Just a)
-        <*> areq textareaField "Como Funcionamos:" (Just b)
-        <*> areq textareaField "Como Podemos Ajudar:" (Just c)
-        <*> areq textareaField "Como Contribuir:" (Just d)
+        <$> areq textareaField (bfs ("Quem Somos:" :: Text)) (Just a)
+        <*> areq textareaField (bfs ("Como Funcionamos:" :: Text)) (Just b)
+        <*> areq textareaField (bfs ("Como Podemos Ajudar:" :: Text)) (Just c)
+        <*> areq textareaField (bfs ("Como Contribuir:":: Text)) (Just d)
     )        
 
 postSobreER :: Handler Html

@@ -34,6 +34,7 @@ getSobreR = do
             runDB $ replace iid sob
             redirect HomeR
         _ -> defaultLayout $ do 
+            setTitle "Sobre"
             addStylesheet $ (StaticR css_bootstrap_css)        
             $(whamletFile "templates/cadastroempresa.hamlet")
             toWidget $(luciusFile "templates/usuario.lucius")

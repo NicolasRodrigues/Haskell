@@ -115,7 +115,8 @@ getArtigoR = do
     (widgetArt, enctype) <- generateFormPost  (formeArtigo diaMat)
     
     msg <- getMessage
-    defaultLayout $ do 
+    defaultLayout $ do
+        setTitle "Artigos"
         addStylesheet $ StaticR css_bootstrap_css
         $(whamletFile "templates/artigo.hamlet")
         

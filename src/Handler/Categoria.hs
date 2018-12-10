@@ -39,6 +39,7 @@ getAlterarCategoriaR aid = do
             runDB $ replace iid sob
             redirect HomeR
         _ -> defaultLayout $ do 
+            setTitle "Alterar categoria"
             addStylesheet $ (StaticR css_bootstrap_css)        
             $(whamletFile "templates/alterarcategoria.hamlet")
             toWidget $(luciusFile "templates/menu.lucius")
@@ -59,6 +60,7 @@ getExibirCategoriaR :: Handler Html
 getExibirCategoriaR = do 
     cat <- runDB $ selectList [][Asc CategoriaId]
     defaultLayout $ do 
+        setTitle "Exibir Categoria"
         addStylesheet $ (StaticR css_bootstrap_css)        
         $(whamletFile "templates/exibircategoria.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")
@@ -74,7 +76,8 @@ getCategoriaR :: Handler Html
 getCategoriaR = do 
     (widgetUsu, enctype) <- generateFormPost formCategoria1
     msg <- getMessage
-    defaultLayout $ do 
+    defaultLayout $ do
+        setTitle "Categoria"
         addStylesheet $ (StaticR css_bootstrap_css)        
         $(whamletFile "templates/categoria.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")

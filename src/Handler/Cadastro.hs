@@ -81,6 +81,7 @@ getCadastroR = do
     diaInc <- liftIO diaHj
     (wid, enc) <- generateFormPost (formCadastro diaInc)
     defaultLayout $ do
+        setTitle "Cadastrar"
         addStylesheet $ (StaticR css_bootstrap_css)
         $(whamletFile "templates/cadastro.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")

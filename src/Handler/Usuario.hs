@@ -24,7 +24,8 @@ getExibirUsuarioR = do
             --usu <- runDB $ get404 (deIdTextParaUsuarioKey idUsuarioText)
                 --maybeUsuario <- runDB $ get (deIdTextParaUsuarioKey idUsuarioText)
             usu <- runDB $ selectList [UsuarioId ==. (deIdTextParaUsuarioKey idUsuarioText)][ Asc UsuarioId]
-            defaultLayout $ do 
+            defaultLayout $ do
+                setTitle "Usuario"
                 addStylesheet $ (StaticR css_bootstrap_css)        
                 $(whamletFile "templates/exibirusuario.hamlet")
                 toWidget $(luciusFile "templates/menu.lucius")
@@ -32,6 +33,7 @@ getExibirUsuarioR = do
         Nothing -> do
             usu <- runDB $ selectList [][ Asc UsuarioId]
             defaultLayout $ do 
+                setTitle "Usuario"
                 addStylesheet $ (StaticR css_bootstrap_css)        
                 $(whamletFile "templates/exibirusuario.hamlet")
                 toWidget $(luciusFile "templates/menu.lucius")
@@ -47,6 +49,7 @@ getAlterarSenhaR aid = do
     (widget, enctype) <- generateFormPost formSenha
     msg <- getMessage
     defaultLayout $ do
+        setTitle "Alterar senha"
         addStylesheet $ StaticR css_bootstrap_css
         $(whamletFile "templates/alterarsenha.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")
@@ -129,6 +132,7 @@ getUsuarioR = do
     (widgetUsu, enctype) <- generateFormPost formUsuario
     msg <- getMessage
     defaultLayout $ do
+        setTitle "Usuario"
         addStylesheet $ StaticR css_bootstrap_css
         $(whamletFile "templates/usuario.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")

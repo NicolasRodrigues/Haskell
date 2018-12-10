@@ -33,6 +33,7 @@ getLoginR = do
     (widgetLogin, enctype) <- generateFormPost formLogin
     msg <- getMessage
     defaultLayout $ do 
+        setTitle "Login"
         addStylesheet $ StaticR css_bootstrap_css
         $(whamletFile "templates/login.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")

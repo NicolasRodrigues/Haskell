@@ -29,6 +29,7 @@ getDicasR = do
     foto <- mapM (\(Entity artigoid _) -> runDB $ selectFirst [PassosArtigoid ==. artigoid] []) nomeDica
     let x = zip nomeDica foto
     defaultLayout $ do
+        setTitle "Dicas"
         addStylesheet $ (StaticR css_bootstrap_css)      
         $(whamletFile "templates/dicas.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")
@@ -44,7 +45,8 @@ formDicas = renderBootstrap $  pure (,)
 getListaArtigoR :: Handler Html
 getListaArtigoR = do 
     art <- runDB $ selectList [][ Asc ArtigoId]
-    defaultLayout $ do 
+    defaultLayout $ do
+        setTitle "Lista de Artigos"
         addStylesheet $ (StaticR css_bootstrap_css)        
         $(whamletFile "templates/listaartigo.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")
@@ -91,6 +93,7 @@ getBuscarArtigoR art = do
     foto <- mapM (\(Entity artigoid _) -> runDB $ selectFirst [PassosArtigoid ==. artigoid] []) nomeDica
     let x = zip nomeDica foto
     defaultLayout $ do
+         setTitle "Busca de Artigos"
          $(whamletFile "templates/dicas.hamlet")
          toWidget $(luciusFile "templates/menu.lucius")
          toWidget $(luciusFile "templates/footer.lucius") 

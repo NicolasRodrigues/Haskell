@@ -33,6 +33,7 @@ getHomeR = do
     putStrLn $ pack $ "============================================"
     mapM_ (\ v -> putStrLn $ (pack.show) v) foto
     defaultLayout $ do
+        setTitle "Home"
         addStylesheet $ (StaticR css_bootstrap_css)     
         $(whamletFile "templates/home.hamlet")
         toWidgetHead $(juliusFile "templates/home.julius")

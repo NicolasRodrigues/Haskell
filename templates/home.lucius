@@ -7,9 +7,10 @@
 }
 
 slider{
+    position: fixed;
      display: block;
-     width: 80%;
-     height: 80%;
+     width: 50%;
+     height: 75%;
      background-color: #ddd;
      overflow: hidden;
      position: absolute;

@@ -6,6 +6,6 @@ $maybe mensa <- msg
 <div class="container">
     <form action=@{CategoriaR} method=post enctype=#{enctype}>
         ^{widgetUsu}
-        <input type="submit" value="Cadastrar">
+        <input type="submit" value="Cadastrar" class="btn btn-success">
 
         ^{widgetFooter}        

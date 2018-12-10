@@ -39,4 +39,5 @@ getHomeR = do
         toWidget $(luciusFile "templates/home.lucius")
         toWidget $(luciusFile "templates/menu.lucius")
         toWidget $(luciusFile "templates/footer.lucius")
+        toWidget $(luciusFile "templates/margem-carrossel.lucius")
         toWidget $(luciusFile "templates/dicas.lucius")

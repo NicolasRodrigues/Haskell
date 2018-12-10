@@ -67,7 +67,7 @@ getExibirCategoriaR = do
         
 formCategoria1 :: Form Categoria
 formCategoria1 = renderBootstrap $   (Categoria 
-        <$> areq textField "Nome: " Nothing
+        <$> areq textField "Nome: " Nothing 
     )
 
 getCategoriaR :: Handler Html

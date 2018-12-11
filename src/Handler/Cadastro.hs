@@ -105,7 +105,8 @@ postCadastroR = do
             liftIO $ fileMove f1 ("static" </> "fotos" </> (show $ fromSqlKey pid1))
             liftIO $ fileMove f2 ("static" </> "fotos" </> (show $ fromSqlKey pid2))
             liftIO $ fileMove f3 ("static" </> "fotos" </> (show $ fromSqlKey pid3))
-            redirect ArtigoR
+            setMessage $ [shamlet| Artigo Cadastrado! |]
+            redirect CadastroR
         _ -> redirect CadastroR 
         
 

@@ -109,32 +109,6 @@ listaCategoriaq = do
 diaHj :: IO Day
 diaHj = fmap utctDay getCurrentTime 
 
-getArtigoR :: Handler Html
-getArtigoR = do 
-    diaMat <- liftIO diaHj
-    (widgetArt, enctype) <- generateFormPost  (formeArtigo diaMat)
-    
-    msg <- getMessage
-    defaultLayout $ do
-        setTitle "Artigos"
-        addStylesheet $ StaticR css_bootstrap_css
-        $(whamletFile "templates/artigo.hamlet")
-        
-postArtigoR :: Handler Html
-postArtigoR = do 
-    diaMat <- liftIO diaHj
-    ((res,_),_) <- runFormPost (formeArtigo diaMat)
-    case res of
-        FormSuccess (art) -> do 
-                artigoid <- runDB $ insert $  (formeArt art)     -- inserindo o artigo
-                runDB $ insert  $ formePasso  art artigoid   -- inserindo o passo da dica
-                runDB $ insert  $ formeInfo  art artigoid   -- inserindo informacoes adicionais
-                setMessage [shamlet|
-                    <h1>
-                        Artigo cadastrado!
-                |]
-                redirect HomeR         
-                
 
                     
 -- para trazer todos as categorias .

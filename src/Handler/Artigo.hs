@@ -54,7 +54,7 @@ getAlterarArtigoR aid = do
                 when (isJust f1) $ fileMove (fromJust f1) ("static" </> "fotos" </> (show $ fromSqlKey pid1))
                 when (isJust f2) $ fileMove (fromJust f2) ("static" </> "fotos" </> (show $ fromSqlKey pid2))
                 when (isJust f3) $ fileMove (fromJust f3) ("static" </> "fotos" </> (show $ fromSqlKey pid3))
-            redirect ArtigoR
+            redirect HomeR
         _ -> defaultLayout $ do 
             setTitle "Artigo"
             addStylesheet $ (StaticR css_bootstrap_css)

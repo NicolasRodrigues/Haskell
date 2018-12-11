@@ -37,6 +37,10 @@ getAlterarCategoriaR aid = do
     case res of
         FormSuccess sob -> do
             runDB $ replace iid sob
+            setMessage [shamlet|
+                    <h1>
+                        Categoria cadastrado!
+                |]
             redirect HomeR
         _ -> defaultLayout $ do 
             setTitle "Alterar categoria"

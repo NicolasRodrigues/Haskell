@@ -68,7 +68,7 @@ formPesquisa = renderBootstrap $ Pesquisa
                            fsLabel="Nome",
                            fsTooltip= Nothing,
                            fsName= Nothing,
-                           fsAttrs=[("class","form-control"),("placeholder","Digite sua pesquisa"),("style","width:70%")]} Nothing        
+                           fsAttrs=[("class","form-control"),("placeholder","Digite sua pesquisa"),("style","width:120%")]} Nothing        
                            
 
 toTexto :: Pesquisa -> Text

@@ -7,11 +7,12 @@
           <a class="active" href=@{ExibirUsuarioR}>Usuario
       $nothing  
           <a class="active" href=@{ExibirUsuarioR}>Usuarios
-          <a class="active" href=@{CadastroR}>Cadastrar dicas
-          <a class="active" href=@{SobreR}>Alterar Sobre
+          <a class="active" href=@{CadastroR}>Cadastrar Dicas
+          <a class="active" href=@{ListaArtigoR}>Lista de Dicas
           <a class="active" href=@{CategoriaR}>Cadastrar Categoria
           <a class="active" href=@{ExibirCategoriaR}>Exibir Categoria   
-          <a class="active" href=@{ListaArtigoR}>Lista de Artigos            
+          <a class="active" href=@{SobreR}>Alterar Sobre
+  
   $nothing      
       <a class="active" id="rightElem" href=@{LoginR}>Login
       <a class="active"  id="rightElem" href=@{UsuarioR}>Cadastra-se

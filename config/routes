@@ -15,7 +15,6 @@
 
 -- rota para exibir um artigo pelo id
 
-/artigo                       ArtigoR        GET POST
 /alterarArtigo/#ArtigoId      AlterarArtigoR GET
 !/artigo/editar/#ArtigoId     EditarR        POST
 !/showArtigo/#ArtigoId        MostrarArtigoR GET
@@ -32,7 +31,7 @@
 
 
 /alterar/categoria/#CategoriaId     AlterarCategoriaR  GET
-!/alterar/categoria/#CategoriaId    AlterarCategoria2R POST
+/alterarR/categoria/#CategoriaId    AlterarCategoria2R POST
 /categoria/cadastrar                CategoriaR         GET POST
 /categoria/apagar/#CategoriaId      ApagarCategoriaR   GET 
 /categoria                          ExibirCategoriaR   GET

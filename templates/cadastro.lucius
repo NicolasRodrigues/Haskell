@@ -20,7 +20,7 @@
 label{
     margin:-40px;
     font-color: black;
-    font-size: 18px;
+    font-size: 17px;
     color: black;
     margin-top: 6px;
     font-style: bold;

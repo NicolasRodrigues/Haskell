@@ -1,3 +1,26 @@
 .footer{
     margin-top: 300px;
 }
+
+#hident2{
+    box-shadow: none;
+    border-color: #2c3e50;
+    outline: 0;
+    border-width: 2px;
+    box-sizing: border-box;
+    /*
+        o que tem em baixo é experimental
+    */
+    margin-bottom: 20px;
+    display: block;
+    width: 320px;
+    height: 45px;
+    padding: 10px 15px;
+    font-size: 15px;
+    line-height: 1.42857143;
+    color: #2c3e50;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #dce4ec;
+    border-radius: 4px;
+}

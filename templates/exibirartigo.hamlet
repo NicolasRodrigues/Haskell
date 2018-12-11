@@ -27,7 +27,11 @@
                         Descrição:  #{passosDesc p1}
                 <tr>
                     <td>
+<<<<<<< HEAD
                         <img src="https://haskell-web-nickmatthaus.c9users.io/static/fotos/#{fromSqlKey $ passoid2}">                    
+=======
+                        <img class="img-fluid" src="https://projhaskell-danfatec13.c9users.io/static/fotos/#{fromSqlKey $ passoid2}">                    
+>>>>>>> 9da74d16fbd7038b852f86c21fdc03ce505699f2
                 <tr>
                     <td>
                         Titulo Passo: #{passosTitulo p2}
@@ -36,7 +40,11 @@
                         Descrição:  #{passosDesc p2}       
                 <tr>
                     <td>
+<<<<<<< HEAD
                         <img src="https://haskell-web-nickmatthaus.c9users.io/static/fotos/#{fromSqlKey $ passoid3}">                    
+=======
+                        <img class="img-fluid" src="https://projhaskell-danfatec13.c9users.io/static/fotos/#{fromSqlKey $ passoid3}">                    
+>>>>>>> 9da74d16fbd7038b852f86c21fdc03ce505699f2
                 <tr>
                     <td>
                         Titulo Passo: #{passosTitulo p3}

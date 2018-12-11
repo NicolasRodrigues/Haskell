@@ -9,8 +9,8 @@
     display: block;
     border: 1px solid gray;
     box-shadow: 10px 10px 10px 10px #ddd;
-    border-radius: 25%;
-    
+    border-radius: 15px;
+    border-color: #95afc0;
     
 }
 

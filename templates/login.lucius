@@ -1,20 +1,28 @@
-.outside{
-    width: 50%;
-    height: 800px;
+.container{
+    width: 30%;
+    height: 400px;
     margin: 0 auto;
-    padding-top: 40px;
+    padding-top: 10px;
     background-color: white;
     margin-bottom: 0.2em;
     color: #666;
     display: block;
     border: 1px solid gray;
     box-shadow: 10px 10px 10px 10px #ddd;
+    border-radius: 25%;
+    
+    
+}
+
+form{
+    margin-top: 30px;
 }
 
 .form{
     margin: 0 auto;
     width: 30%;
 }
+
 
 label{
     margin:-10px;
@@ -31,16 +39,7 @@ input[type=text]{
     box-sizing: border-box;
 }
 
-input[type=submit]{
-    margin: 20 0 0 0 auto;
-    width: 10%;
-    border: none;
-    background-color: #00b894;
-    padding: 10px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    color: white;
-    font-weight: bold;
+input[type="submit"]{
     margin-top: 20px;
 }
 

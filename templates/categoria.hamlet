@@ -7,7 +7,7 @@ $maybe mensa <- msg
 <div class="editar" style="margin-left: 600px;">
     <form action=@{CategoriaR} method=post enctype=#{enctype}>
         ^{widgetUsu}
-            <input type="submit" value="Cadastrar" class="btn btn-primary">
+            <input type="submit" value="Cadastrar" class="btn btn-success">
 
 <div class="footer">
 ^{widgetFooter}        

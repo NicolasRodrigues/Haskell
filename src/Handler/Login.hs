@@ -10,6 +10,7 @@ import Import
 import Text.Lucius
 import Text.Julius
 import Database.Persist.Sql
+import Yesod.Form.Bootstrap3(bfs)
 
 
 widgetFooter :: Widget
@@ -25,8 +26,8 @@ widgetMenu = do
 
 formLogin :: Form (Text, Text)
 formLogin = renderBootstrap $ pure (,)
-    <*> areq emailField "E-mail: " Nothing
-    <*> areq passwordField "Password: " Nothing
+    <*> areq emailField (bfs ("E-mail: " :: Text)) (Nothing)
+    <*> areq passwordField (bfs ("Password: " :: Text)) (Nothing)
 
 getLoginR :: Handler Html
 getLoginR = do 

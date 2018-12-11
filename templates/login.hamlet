@@ -6,10 +6,10 @@ $maybe mensa <- msg
         #{mensa}
 <h1 style="text-align:center">Login
 
-<div class="container" style="text-align:center">
+<div class="container fluid-container" style="text-align:center">
     <form action=@{LoginR} method=post enctype=#{enctype}>
         ^{widgetLogin}
-        <input type="submit" value="Login"/>
+        <input class="btn btn-success" type="submit" value="Login"/>
 
 <div class="footerT">
 ^{widgetFooter}

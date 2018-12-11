@@ -1,9 +1,9 @@
 ^{widgetMenu}
 
-<h1> Informações da Empresa
 
 <div class="exibir">
-        <table class=table>
+        <h1> Informações da Empresa
+        <table class="table">
             <thead>
                 <tr>
                     <th>

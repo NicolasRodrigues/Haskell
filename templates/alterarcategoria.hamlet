@@ -5,7 +5,7 @@
     <form action=@{AlterarCategoria2R aid} method="POST" enctype=#{enctype}>
         <div class="form">
             ^{widget}
-            <button type="button" class="btn btn-primary">Alterar
+            <input type="submit" value="Alterar" class="btn btn-primary">
 
 <div class="footer" style="margin-top: 300px;">
 ^{widgetFooter}

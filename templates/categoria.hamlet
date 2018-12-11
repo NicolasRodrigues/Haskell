@@ -3,10 +3,11 @@ $maybe mensa <- msg
     <div class="alert alert-danger">
         #{mensa}
 
-<div class="container">
+<h1 style="text-align:center; margin-top: 130px"> Cadastrar Categoria
+<div class="editar" style="margin-left: 600px;">
     <form action=@{CategoriaR} method=post enctype=#{enctype}>
         ^{widgetUsu}
-        <input type="submit" value="Cadastrar" class="btn btn-success">
+            <input type="submit" value="Cadastrar" class="btn btn-primary">
 
 <div class="footer">
 ^{widgetFooter}        

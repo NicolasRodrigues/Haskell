@@ -1,13 +1,16 @@
 ^{widgetMenu}
 
-
-<div class="editar" style="margin: 0 auto; padding: 100px; border: 1px solid black">
-    <h1> Alterar Senha
-    <form action=@{AlterarSenhaR aid} method="POST" enctype=#{enctype}>
-        <div class="form">
-            ^{widget}
-            <input type="submit" value="Alterar">
 $maybe mensa <- msg
         #{mensa}
 
+<h1 style="text-align:center; margin-top: 130px"> Alterar Senha
+<div class="editar" style="margin-left: 600px;">
+    <form action=@{AlterarSenhaR aid} method="POST" enctype=#{enctype}>
+        <div class="form">
+            ^{widget}
+            <input type="submit" style="mamrgin-left: 20px" value="Alterar" class="btn btn-primary">
+
+
+
+<div class="footer" style="margin-top: 195px;">
 ^{widgetFooter}

@@ -28,5 +28,7 @@
                                 <form action=@{ApagarUsuarioR iid} method=get>
                                     <input type="submit" value="Deletar" class="btn btn-info">
 
+
+<div class="footer" style="margin-top: 410px;">
  ^{widgetFooter}
 

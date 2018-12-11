@@ -24,5 +24,6 @@
                                 <form action=@{ApagarCategoriaR iid} method=get>
                                     <input type="submit" value="Deletar" class="btn btn-info">
 
+<div class="footer">
  ^{widgetFooter}
 

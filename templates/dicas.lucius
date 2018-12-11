@@ -2,5 +2,8 @@
     width: 300px;
     height: 220px;
     border: 2px solid #6ab04c;
+}
 
+.footer{
+    margin-top: 155px;
 }

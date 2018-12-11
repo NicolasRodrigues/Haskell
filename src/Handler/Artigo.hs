@@ -54,6 +54,10 @@ getAlterarArtigoR aid = do
                 when (isJust f1) $ fileMove (fromJust f1) ("static" </> "fotos" </> (show $ fromSqlKey pid1))
                 when (isJust f2) $ fileMove (fromJust f2) ("static" </> "fotos" </> (show $ fromSqlKey pid2))
                 when (isJust f3) $ fileMove (fromJust f3) ("static" </> "fotos" </> (show $ fromSqlKey pid3))
+            setMessage $ [shamlet|
+                <div class="alert alert-success" style="height: 50px"; "margin-top: -5px", role="alert">
+                        <p>Artigo alterado com sucesso!
+            |]
             redirect HomeR
         _ -> defaultLayout $ do 
             setTitle "Artigo"
@@ -67,6 +71,7 @@ getAlterarArtigoR aid = do
     
 postEditarR :: ArtigoId -> Handler Html
 postEditarR aid = getAlterarArtigoR aid
+
         
 formEditar :: Text -> CategoriaId -> Day -> Int -> Int -> Int -> Int -> PassosId -> Text -> Textarea -> PassosId -> Text -> Textarea -> PassosId -> Text -> Textarea -> InfoaddId -> Textarea -> Textarea -> Textarea -> ArtigoId
     -> Form (Artigo, (PassosId, Passos, Maybe FileInfo), (PassosId, Passos, Maybe FileInfo), (PassosId, Passos, Maybe FileInfo),(InfoaddId, Infoadd))
@@ -113,7 +118,7 @@ formEditar a b c d e f g h i j k l m n o p q r s t u = renderDivs $ (,,,,)
                                          fsLabel="Foto 3: ",
                                          fsTooltip= Nothing,
                                          fsName= Nothing,
-                                         fsAttrs=[("accept","image/jpeg")]} 
+                                         fsAttrs=[("accept","image/jpeg"),("style","padding: 4px; width: 380px;")]} 
                            Nothing)
     <*> ((,)
     <$> pure q
@@ -158,7 +163,9 @@ getCurtirR aid = do
         toWidget $(luciusFile "templates/footer.lucius")
         toWidget $(luciusFile "templates/alterarartigo.lucius")
         toWidget $(luciusFile "templates/exibirartigo.lucius")
-        setMessage $ [shamlet| Obrigado pela Curtida!!!|] 
+        setMessage $ [shamlet|
+        <div class="alert alert-success" style="height: 50px"; "margin-top: -5px", role="alert">
+            Obrigado pela Curtida!!!|] 
         
         
 {-

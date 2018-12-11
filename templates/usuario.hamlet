@@ -10,4 +10,4 @@ $maybe mensa <- msg
                 ^{widgetUsu}
                 <button class="btn btn-success" type="submit">Cadastrar
                 
-        
+^{widgetFooter}

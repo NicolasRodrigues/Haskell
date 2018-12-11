@@ -8,6 +8,7 @@
             <form action=@{SobreER} method="POST" enctype=#{enctype}>
                 <div class="form">
                     ^{widget}
-                    <input type="submit" value="Alterar" class="btn btn-success">
-        
+                    <input style="margin-left: 160px; margin-top: 20px", type="submit" value="Alterar" class="btn btn-success">
+
+<div class="footer" style="margin-top: 250px">
                 ^{widgetFooter}

@@ -63,4 +63,5 @@ getSobreExibirR = do
         addStylesheet $ (StaticR css_bootstrap_css)        
         $(whamletFile "templates/sobre.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")
-        toWidget $(luciusFile "templates/footer.lucius")            
+        toWidget $(luciusFile "templates/footer.lucius") 
+        toWidget $(luciusFile "templates/sobre.lucius")

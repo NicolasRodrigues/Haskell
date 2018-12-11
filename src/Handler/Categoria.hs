@@ -38,8 +38,8 @@ getAlterarCategoriaR aid = do
         FormSuccess sob -> do
             runDB $ replace iid sob
             setMessage [shamlet|
-                    <h1>
-                        Categoria cadastrado!
+            <div class="alert alert-success" style="height: 50px"; "margin-top: -5px", role="alert">
+                        Categoria alterada!
                 |]
             redirect HomeR
         _ -> defaultLayout $ do 
@@ -68,7 +68,8 @@ getExibirCategoriaR = do
         addStylesheet $ (StaticR css_bootstrap_css)        
         $(whamletFile "templates/exibircategoria.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")
-        toWidget $(luciusFile "templates/footer.lucius")        
+        toWidget $(luciusFile "templates/footer.lucius")
+        toWidget $(luciusFile "templates/exibircategoria.lucius") 
         
         
 formCategoria1 :: Form Categoria
@@ -86,7 +87,7 @@ getCategoriaR = do
         $(whamletFile "templates/categoria.hamlet")
         toWidget $(luciusFile "templates/menu.lucius")
         toWidget $(luciusFile "templates/footer.lucius")
-        
+        toWidget $(luciusFile "templates/categoria.lucius")
         
 postCategoriaR :: Handler Html
 postCategoriaR = do 
@@ -95,7 +96,7 @@ postCategoriaR = do
         FormSuccess (cat) -> do 
                 runDB $ insert cat 
                 setMessage [shamlet|
-                    <h1>
-                        Categoria cadastrado!
+            <div class="alert alert-success" style="height: 50px"; "margin-top: -5px", role="alert">
+                        Categoria cadastrada!
                 |]
                 redirect HomeR        

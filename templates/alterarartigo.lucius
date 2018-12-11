@@ -1,41 +1,65 @@
-.alterarartigo{
-    width: 40%;
-    height: 1000px;
+.cadastro{
+    width: 48%;
+    height: 60%;
     margin: 0 auto;
     background-color: baby-green;
     margin-bottom: 0.2em;
-    color: #666;
+    color: #666;    
     display: block;
     border: 1px solid gray;
+    border-radius: 10px;
     box-shadow: 10px 10px 10px 10px #ddd;
 }
 
 .form{
     margin: 0 auto;
-    width: 30%;
+    width: 28%;
+    margin-left: 30%;
 }
 
 label{
-    margin:-30px;
+    margin:-40px;
     font-color: black;
-    font-size: 18px;
+    font-size: 17px;
+    color: black;
+    margin-top: 6px;
     font-style: bold;
+    display: inline-block;
+    margin-bottom: 2px;
+    margin-right: 10px;
 }
 
 input[type=text]{
-    width: 107%;
+    width: 200%;
     padding: 5px 5px;
     margin: 5px 0;
+    color: black;
+    margin-left: -30px;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    
 }
 
 textarea{
-    width: 100%;
-    padding: 5px 5px;
-    margin: 5px 0;
+    width: 170%;
+    padding: 10px 10px;
+    margin: 8px 0;
+}
+
+input[type=submit]{
+    margin: 0 auto;
+    width: 80%;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    text-align: center;
+    color: white;
+    margin-left: 60px;
+    margin-bottom: 20px;
 }
 
 #fstPasso{
@@ -45,4 +69,13 @@ textarea{
 label::before{
     content: "*";
     color: red;
+}
+
+#hident3{
+    border-radius: 10px;
+    width: 70%;
+}
+
+.footer{
+    margin-top: 300px;
 }

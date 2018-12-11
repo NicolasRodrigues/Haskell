@@ -2,11 +2,12 @@
 
 <h1> Alterar Artigo
 
-<div class="editar">
+<div class="cadastro">
     <form action=@{EditarR aid} method="POST" enctype=#{enctype}>
         <div class="form">
             ^{widget}
             <input type="submit" value="Alterar">
 
-        ^{widgetFooter}
+<div class="footer">
+^{widgetFooter}
 

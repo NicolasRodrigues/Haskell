@@ -3,6 +3,11 @@
     border-radius: 5px;
     border: solid-black;
     margin-top: 100px;
-    width: 300px;
+    width: 400px;
     background-color: #ddd;
+}
+
+button{
+    margin-left: 145px;
+    margin-top: 20px;
 }

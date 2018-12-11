@@ -7,16 +7,17 @@
             <thead>
                 <tr>
                     <th>
-                        Como somos: #{sobreComoSomos info}
+                        Quem somos: #{sobreComoSomos info}
                 <tr>
                     <th>
                         Como funciona: #{sobreComoFunciona info}
                 <tr>
                     <th>
-                        Como posso ajudar: #{sobreComoPossoAjudar info}
+                        Como podemos ajudar: #{sobreComoPossoAjudar info}
                 <tr>        
                     <th>
                         Como contribuir:  #{sobreComoContribuir info}
 
-        ^{widgetFooter}
+<div class="footerT">
+^{widgetFooter}
 

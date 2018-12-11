@@ -65,8 +65,8 @@ postAlterarSenhaR aid = do
                 if s2 == s3 then do
                     runDB $ update iid [UsuarioSenha =. s2] 
                     setMessage [shamlet|
-                        <div class="alert alert-danger">
-                             Senha Alterada.
+                        <div class="alert alert-success" style="height: 50px"; "margin-top: -5px", role="alert"">
+                             Senha Alterada com sucesso!.
                     |]
                     redirect $ AlterarSenhaR aid
                 else do 

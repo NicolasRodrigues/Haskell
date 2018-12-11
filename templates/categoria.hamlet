@@ -8,4 +8,5 @@ $maybe mensa <- msg
         ^{widgetUsu}
         <input type="submit" value="Cadastrar" class="btn btn-success">
 
-        ^{widgetFooter}        
+<div class="footer">
+^{widgetFooter}        

@@ -1,16 +1,16 @@
 ^{widgetMenu}
 
-<h1 style="text-align:center">Login
 
 $maybe mensa <- msg
     <div class="alert alert-danger">
         #{mensa}
+<h1 style="text-align:center">Login
 
 <div class="container" style="text-align:center">
     <form action=@{LoginR} method=post enctype=#{enctype}>
         ^{widgetLogin}
-        <input type="submit" value="Login">
-        
-<div class="footer">
-    ^{widgetFooter}
+        <input type="submit" value="Login"/>
+
+<div class="footerT">
+^{widgetFooter}
 

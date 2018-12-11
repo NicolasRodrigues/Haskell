@@ -8,5 +8,6 @@
             ^{wid}
             <input type="submit" value="Enviar" class="btn btn-success">
 
-        ^{widgetFooter}
+<div class="footer">
+^{widgetFooter}
 

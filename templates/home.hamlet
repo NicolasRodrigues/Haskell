@@ -9,6 +9,6 @@
             <div class="col-sm-4 ajuste">
                 <h3>#{artigoNome artes}
                 $maybe Entity idPasso _ <- y
-                     <a href=@{MostrarArtigoR idArtigo}><img src="https://haskell-web-nickmatthaus.c9users.io/static/fotos/#{fromSqlKey idPasso}"class="img-thumbnail reduz-tamanho ajuste">
+                     <a href=@{MostrarArtigoR idArtigo}><img class="img-thumbnail ajuste reduz-tamanho" src="https://haskell-web-nickmatthaus.c9users.io/static/fotos/#{fromSqlKey idPasso}">
                  
 ^{widgetFooter}

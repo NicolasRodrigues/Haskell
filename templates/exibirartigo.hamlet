@@ -18,7 +18,7 @@
             <tbody>
                 <tr>
                     <td>
-                        <img class="img-fluid" src="/static/fotos/#{fromSqlKey $ passoid1}">                    
+                        <img class="img-fluid" src="https://haskell-web-nickmatthaus.c9users.io/static/fotos/#{fromSqlKey $ passoid1}">                    
                 <tr>
                     <td>
                         Titulo Passo: #{passosTitulo p1}
@@ -27,11 +27,7 @@
                         Descrição:  #{passosDesc p1}
                 <tr>
                     <td>
-<<<<<<< HEAD
-                        <img src="https://haskell-web-nickmatthaus.c9users.io/static/fotos/#{fromSqlKey $ passoid2}">                    
-=======
-                        <img class="img-fluid" src="https://projhaskell-danfatec13.c9users.io/static/fotos/#{fromSqlKey $ passoid2}">                    
->>>>>>> 9da74d16fbd7038b852f86c21fdc03ce505699f2
+                        <img class="img-fluid" src="https://haskell-web-nickmatthaus.c9users.io/static/fotos/#{fromSqlKey $ passoid2}">                    
                 <tr>
                     <td>
                         Titulo Passo: #{passosTitulo p2}
@@ -40,11 +36,7 @@
                         Descrição:  #{passosDesc p2}       
                 <tr>
                     <td>
-<<<<<<< HEAD
-                        <img src="https://haskell-web-nickmatthaus.c9users.io/static/fotos/#{fromSqlKey $ passoid3}">                    
-=======
-                        <img class="img-fluid" src="https://projhaskell-danfatec13.c9users.io/static/fotos/#{fromSqlKey $ passoid3}">                    
->>>>>>> 9da74d16fbd7038b852f86c21fdc03ce505699f2
+                        <img class="img-fluid" src="https://haskell-web-nickmatthaus.c9users.io/static/fotos/#{fromSqlKey $ passoid3}">                    
                 <tr>
                     <td>
                         Titulo Passo: #{passosTitulo p3}
@@ -81,5 +73,6 @@
                         <form action=@{NaoCurtirR aid} method=get>
                             <input type="submit" value="Não Curtir" class="btn btn-danger">
                 -->
-    ^{widgetFooter}
+<div class="footer">
+^{widgetFooter}
 

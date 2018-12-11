@@ -1,11 +1,11 @@
 ^{widgetMenu}
 
-<h1> Alterar Categoria
-
-<div class="editar">
+<h1 style="text-align:center; margin-top: 130px"> Alterar Categoria
+<div class="editar" style="margin-left: 600px;">
     <form action=@{AlterarCategoria2R aid} method="POST" enctype=#{enctype}>
         <div class="form">
             ^{widget}
-            <input type="submit" value="Alterar">
+            <button type="button" class="btn btn-primary">Alterar
 
-        ^{widgetFooter}
+<div class="footer" style="margin-top: 300px;">
+^{widgetFooter}
